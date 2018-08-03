@@ -1,0 +1,61 @@
+<p class="tip"></p>
+<div class="cont">
+  <div class="form sign-in">
+    <h2>Willkommen zurück</h2>
+    <%= simple_form_for @user, url: new_user_session_path do |f| %>
+      <label>
+        <span>Email</span>
+        <%= f.input :email, label: false %>
+      </label>
+      <label>
+        <span>Password</span>
+        <%= f.input :password, label: false %>
+      </label>
+      <p class="forgot-pass">
+        <%= link_to "Passwort vergessen?", new_password_path(@user), class: "forgot-pass" %>
+      </p>
+      <%= f.button :submit, "Log in", class: "submit" %>
+    <% end %>
+    </div>
+    <div class="sub-cont">
+      <div class="img">
+        <div class="img__text m--up">
+          <h2>Neu hier?</h2>
+          <p>Melde dich jetzt an und greife auf eine große Anzahl von Konzertkontakten zurück!</p>
+        </div>
+        <div class="img__text m--in">
+          <h2>Schon angemeldet?</h2>
+          <p>Wenn du bereits einen Account hast, melde dich einfach an!</p>
+        </div>
+        <div class="img__btn">
+          <span class="m--up">Anmelden</span>
+          <span class="m--in">Einloggen</span>
+        </div>
+      </div>
+    <div class="form sign-up">
+      <h2>Melde dich an und finde neue Konzertmöglichkeiten</h2>
+      <%= simple_form_for @user, url: user_registration_path, method: :post do |f| %>
+        <label>
+          <span>Name</span>
+          <%= f.input :name, label: false %>
+        </label>
+        <label>
+          <span>Email</span>
+          <%= f.input :email, label: false %>
+        </label>
+        <label>
+          <span>Password</span>
+          <%= f.input :password, label: false %>
+        </label>
+        <%= f.button :submit, "Anmelden", class: "submit" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  document.querySelector('.img__btn').addEventListener('click', function() {
+    document.querySelector('.cont').classList.toggle('s--signup');
+  });
+</script>

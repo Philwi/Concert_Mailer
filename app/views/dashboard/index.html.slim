@@ -1,0 +1,66 @@
+header
+  ul.breadcrumbs
+    li
+      a href="#"  Dashboard
+    li
+      a href="#"  Kontakt
+    li
+      = link_to "Logout", destroy_user_session_path(current_user), method: :delete
+
+.content
+  .caption
+    h1 Kontaktiere
+    h1 Konzertveranstalter
+    span.city aus der ganzen
+    span.country Welt
+  nav.main-nav
+    ul
+      li.veranstalter data-toggle="modal" data-target=".kontakte_modal"
+        .icon.fa.fa-address-book.fa-2x
+        span Veranstalter
+      li.mailings data-toggle="modal" data-target=".nachrichten_modal"
+        .icon.fa.fa-comment-o.fa-2x
+        span Nachrichten
+      li.history data-toggle="modal" data-target=".history_modal"
+        .icon.fa.fa-align-left.fa-2x
+        span History
+      li.likes data-toggle="modal" data-target=".likes_modal"
+        .icon.fa.fa-heart-o.fa-2x
+        span Likes
+      li.settings data-toggle="modal" data-target=".einstellungen_modal"
+        /*.menuicon.fa.fa-bars
+            .ul-menu
+            p Settings
+            ul
+              li Option 1
+              li Option 2
+              li Option 3
+            input max="100" min="0" onchange="rangevalue.value=value" type="range" /
+            output#rangevalue 50
+            button Save Changes
+            .ul-menu-close.fa.fa-times
+        .icon.fa.fa-cog.fa-2x
+        span Einstellungen
+
+= render 'dashboard/actions/kontakte'
+= render 'dashboard/actions/nachrichten'
+= render 'dashboard/actions/history'
+= render 'dashboard/actions/likes'
+= render 'dashboard/actions/einstellungen'
+
+javascript:
+  $('.main-nav ul li').click(function() {
+  $('.main-nav ul li').removeClass('active');
+  $(this).addClass('active');
+  });
+
+  $('.menuicon').click(function() {
+    $('.ul-menu').css('bottom', '-150%');
+    $(this).next('.ul-menu').css('bottom', '0');
+  });
+
+  $('.ul-menu-close').click(function() {
+    $('.ul-menu').css('bottom', '-150%');
+  });
+
+

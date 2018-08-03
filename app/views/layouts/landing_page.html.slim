@@ -1,0 +1,11 @@
+html
+  head
+    title
+      | Concert Mailer
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag :landing_page
+    = stylesheet_link_tag :landing_page
+  body
+    = yield
