@@ -1,0 +1,10 @@
+= simple_form_for @band do |f|
+  = f.input :name
+  = f.input :ort
+  = f.input :bandcamp
+  = f.input :website
+  = f.input :gründung
+  = f.input :email
+  = f.input :telefon
+  .text-center
+    = f.submit "Abschicken", class: "btn btn-secondary"

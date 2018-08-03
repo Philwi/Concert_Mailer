@@ -13,3 +13,26 @@ console.log('Hello World from Webpacker')
 //= require bootstrap
 //= require jquery
 //= require jquery_ujs
+
+import Vue from 'vue'
+import $ from 'jquery'
+import Kontakte from './Kontakte.vue'
+import Einstellungen from './Einstellungen.vue'
+
+if (!('jQuery' in window)) {
+  window.jQuery = $
+  window.$ = $
+}
+
+$(window).on('load',function(){
+  var kontakte = new Vue({
+    el: '#kontakte',
+    render: h => h(Kontakte)
+  });
+
+  var einstellungen = new Vue({
+    el: '#einstellungen',
+    render: h => h(Einstellungen)
+  });
+
+})

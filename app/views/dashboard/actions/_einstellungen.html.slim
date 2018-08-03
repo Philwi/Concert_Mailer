@@ -4,9 +4,39 @@
       .modal-body
         button.close aria-label="Close" data-dismiss="modal" type="button"
           span aria-hidden="true"  &times;
-        p
-          | heyyy, hier wird ziemlich viel content stehen. lool
-        h3
-          | alles mögliche z.B.
-        b
-          | alle Konzertveranstalter
+        .text-center
+					.btn-group.btn-group-toggle data-toggle="buttons"
+						label.btn.btn-secondary.nutzer.active
+							input#option1 autocomplete="off" checked="" name="options" type="radio" Nutzereinstellungen
+						label.btn.btn-secondary.band-bearbeiten
+							input#option2 autocomplete="off" name="options" type="radio" Bandeinstellungen
+						label.btn.btn-secondary.band-create
+							input#option2 autocomplete="off" name="options" type="radio" Band hinzufügen
+        .js-lazy-load-einstellungen-user
+        .js-lazy-load-einstellungen-band-bearbeiten
+        .js-lazy-load-einstellungen-band-create
+
+        //#einstellungen
+
+javascript:
+  $('.nutzer').click(function(){
+		$('.js-lazy-load-einstellungen-user').load("/users/edit");
+		$('.js-lazy-load-einstellungen-band-bearbeiten').hide();
+		$('.js-lazy-load-einstellungen-band-create').hide();
+		$('.js-lazy-load-einstellungen-user').show();
+	})
+  $('.band-bearbeiten').click(function(){
+		$('.js-lazy-load-einstellungen-band-bearbeiten').load("/bands/edit")
+		$('.js-lazy-load-einstellungen-user').hide();
+		$('.js-lazy-load-einstellungen-band-create').hide();
+		$('.js-lazy-load-einstellungen-band-bearbeiten').show();
+	})
+  $('.band-create').click(function(){
+		$('.js-lazy-load-einstellungen-band-create').load("/bands/new")
+		$('.js-lazy-load-einstellungen-user').hide();
+		$('.js-lazy-load-einstellungen-band-bearbeiten').hide();
+		$('.js-lazy-load-einstellungen-band-create').show();
+	})
+
+
+

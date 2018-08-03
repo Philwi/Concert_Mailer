@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  ort: MyString
+  bandcamp: MyString
+  website: MyString
+  gründung: 2018-08-03
+  email: MyString
+  telefon: MyString
+
+two:
+  name: MyString
+  ort: MyString
+  bandcamp: MyString
+  website: MyString
+  gründung: 2018-08-03
+  email: MyString
+  telefon: MyString

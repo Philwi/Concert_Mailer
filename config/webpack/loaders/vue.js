@@ -8,6 +8,14 @@ module.exports = {
   test: /\.vue(\.erb)?$/,
   use: [{
     loader: 'vue-loader',
-    options: { extractCSS }
+    options: {
+      extractCSS,
+      loaders: {
+        sass: 'vue-style-loader!css-loader!postcss-loader!sass-loader?indentedSyntax',
+        js: 'babel-loader',
+        scss: 'vue-style-loader!css-loader!postcss-loader!sass-loader',
+        pug: 'pug-plain-loader'
+      }
+    }
   }]
 }
