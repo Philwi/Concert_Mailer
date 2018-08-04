@@ -4,13 +4,15 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.where('start_time >= ?', Time.zone.now)
+    @events = Event.where(band_id: Band.where(user_id: current_user.id))
+    @events = @events.where('start_time >= ? ', Time.zone.now)
     @band = Band.where(user_id: current_user.id)
   end
 
   def search
     if params[:band_id].blank?
-      @events = Event.where('start_time >= ? ', Time.zone.now)
+      @events = Event.where(band_id: Band.where(user_id: current_user.id))
+      @events = @events.where('start_time >= ? ', Time.zone.now)
     else
       @events = Event.where('start_time >= ? AND band_id = ?', Time.zone.now, params[:band_id])
     end
