@@ -18,4 +18,9 @@
 //= require bootstrap
 //= require jquery
 //= require jquery_ujs
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/locale-all
+//= require fullcalendar/gcal
 //= require_tree .
+

@@ -1,22 +1,11 @@
-.text-right
-  = select_tag "Band", options_from_collection_for_select(@band, "id", "name"), class: "select-band-name"
-.hallooo
-javascript:
-  $('.select-band-name').live('change', '.select-band-name', function(){
-    console.log("hallo");
-      alert();
-    });
-
-
-
-//= simple_form_for @band do |f|
-//  = f.input :id, as: :hidden
-//  = f.input :name
-//  = f.input :ort
-//  = f.input :bandcamp
-//  = f.input :website
-//  = f.input :gründung
-//  = f.input :email
-//  = f.input :telefon
-//  .text-center
-//    = f.submit "Ändern", class: "btn btn-secondary"
+= simple_form_for @band do |f|
+  = f.input :id, as: :hidden, value: "#{current_user.id}"
+  = f.input :name
+  = f.input :ort
+  = f.input :bandcamp
+  = f.input :website
+  = f.input :gründung
+  = f.input :email
+  = f.input :telefon
+  .text-center
+    = f.submit "Ändern", class: "btn btn-secondary"

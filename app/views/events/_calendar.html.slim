@@ -1,0 +1,23 @@
+#calendar
+br
+.text-center
+  button.new-concert style= "margin-right: 10px;" class="btn btn-secondary"
+    | Neues Konzert anlegen
+  button.all-concerts style= "margin-right: 10px;" class="btn btn-secondary"
+    | Alle Konzerte auflisten
+
+javascript:
+  $('#calendar').fullCalendar({
+    events: '/events.json',
+    eventClick: function(calEvent, jsEvent, view) {
+      alert('Event: ' + calEvent.title +
+        '\nBeschreibung: ' + calEvent.description +
+        '\nOrt: ' + calEvent.location +
+        '\nVeranstaltung: ' + calEvent.link +
+        '\nBand_id: ' + calEvent.band_id
+        );
+      if (calEvent.url){
+        return false;
+        }
+      }
+  });

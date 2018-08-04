@@ -1,0 +1,21 @@
+= simple_form_for @event, url: create_event_path(format: :js), remote: true do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :band_id, collection: @band, include_blank: false, include_hidden: false, label: "Für welche Band?"
+    = f.input :title
+    = f.input :description, label: "Beschreibung"
+    = f.input :location, label: "Ort"
+    = f.input :bands
+    = f.input :link, label: "Link zur Veranstaltung"
+    = f.input :start_time
+
+  .text-center
+    = f.button :submit, "Erstelle Kalendereintrag", class: "btn btn-secondary"
+
+br
+.text-center
+  button.all-concerts style= "margin-right: 10px;" class="btn btn-secondary"
+    | Alle Konzerte auflisten
+  = link_to "Kalendar", calendar_path, remote: true, class: "btn btn-secondary"

@@ -1,0 +1,25 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @event.title
+p
+  strong Description:
+  = @event.description
+p
+  strong Ort:
+  = @event.location
+p
+  strong Link:
+  = @event.link
+p
+  strong Bands:
+  = @event.bands
+p
+  strong Start time:
+  = @event.start_time
+
+.text-center
+  button.all-concerts style= "margin-right: 10px;" class="btn btn-secondary"
+    | Alle Konzerte auflisten
+  = link_to "Kalendar", calendar_path, remote: true, class: "btn btn-secondary"

@@ -3,6 +3,10 @@ class BandsController < ApplicationController
     @band = Band.new
   end
 
+  def show
+    @band = Band.where(user_id: current_user.id)
+  end
+
   def create
     @band = Band.new(band_params)
     @band.user_id = current_user.id
@@ -12,7 +16,7 @@ class BandsController < ApplicationController
   end
 
   def edit
-    @band = Band.where(user_id: current_user.id)
+    @band = Band.find(params[:id])
   end
 
   def update

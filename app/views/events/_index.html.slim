@@ -1,0 +1,25 @@
+table.table.table-striped
+  thead
+    tr
+      th Title
+      th Ort
+      th Description
+      th Bands
+      th Link
+      th Start time
+      th
+      th
+      th
+
+  tbody
+    - @events.each do |event|
+      tr
+        td = event.title
+        td = event.location
+        td = event.description
+        th = event.bands
+        th = event.link
+        td = event.start_time
+        td = link_to 'Zeige', event, class: "btn btn-success", remote: true
+        td = link_to 'Löschen', event, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger", remote: true
+

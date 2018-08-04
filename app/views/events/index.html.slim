@@ -1,0 +1,14 @@
+p.d-inline Alle zukünftigen Konzerte von: #{" "}
+= simple_form_for :event, url: {action: "search"}, remote: true do |f|
+  h4 = f.input :bands,  collection: @band, id: "select-band-for-filtering-concerts", label: false
+
+.js-lazy-loader-specific-concerts
+  = render 'index', locales: {event: @events}
+br
+
+.text-center
+  button.new-concert style= "margin-right: 10px;" class="btn btn-secondary"
+    | Neues Konzert anlegen
+  = link_to "Kalender", calendar_path, remote: true, class: "btn btn-secondary"
+
+

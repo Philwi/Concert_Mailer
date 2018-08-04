@@ -1,0 +1,25 @@
+$(document).on('click','.new-concert', function(){
+  $('.js-lazy-loader-calendar').load("/events/new");
+})
+$(document).on('click','.all-concerts', function(){
+  $('.js-lazy-loader-calendar').load("/events/");
+})
+$(document).on('click','.calendar-concerts', function(){
+  $('.js-lazy-loader-calendar').load("calendar");
+})
+
+$(document).on('change','#event_bands', function(){
+  $.ajax({
+    url: "/event/search/",
+    data: {
+      band_id: $('#event_bands').val()
+    },
+    dataType: "script"
+  })
+})
+
+$('#calendar').fullCalendar({
+  events: '/events.json'
+})
+
+
