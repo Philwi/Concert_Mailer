@@ -1,13 +1,11 @@
-table.table.table-striped
+table.table.table-striped.all_concerts
   thead
     tr
-      th Title
+      th Name
       th Ort
-      th Description
+      th Beschreibung
       th Bands
-      th Link
-      th Start time
-      th
+      th Datum
       th
       th
 
@@ -18,8 +16,7 @@ table.table.table-striped
         td = event.location
         td = event.description
         th = event.bands
-        th = event.link
-        td = event.start_time
-        td = link_to 'Zeige', event, class: "btn btn-success", remote: true
+        td = event.start_time.strftime("%d.%m.%Y")
+        td = link_to 'Anzeigen', edit_event_path(event), class: "btn btn-success", remote: true
         td = link_to 'Löschen', event, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger", remote: true
 

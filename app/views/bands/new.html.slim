@@ -1,10 +1,45 @@
 = simple_form_for @band do |f|
-  = f.input :name
-  = f.input :ort
-  = f.input :bandcamp
-  = f.input :website
-  = f.input :gründung
-  = f.input :email
-  = f.input :telefon
+  .custom_band_form
+    .row
+      .col.col-lg-2
+        i.fa.fa-user.fa-2x
+      .col.col-lg-10
+        = f.input_field :name, required: true, placeholder: "Name"
+    .row
+      .col.col-lg-2
+        i.fa.fa-map-marker.fa-2x
+      .col.col-lg-10
+        = f.input_field :ort, placeholder: "Von wo kommt ihr her?"
+    .row
+      .col.col-lg-2
+        i.fa.fa-headphones.fa-2x
+      .col.col-lg-10
+        = f.input_field :bandcamp, placeholder: "Bandcamp Link"
+    .row
+      .col.col-lg-2
+        i.fa.fa-home.fa-2x
+      .col.col-lg-10
+        = f.input_field :website, placeholder: "Eure Website"
+    .row
+      .col.col-lg-2
+        i.fa.fa-envelope.fa-2x
+      .col.col-lg-10
+        = f.input_field :email, required: true, placeholder: "Eure Band E-mail"
+    .row
+      .col.col-lg-2
+        i.fa.fa-phone.fa-2x
+      .col.col-lg-10
+        = f.input_field :telefon, placeholder: "Telefon"
+    .row
+      .col.col-lg-2
+        i.fa.fa-birthday-cake.fa-2x
+      .col.col-lg-10
+        = f.input :gründung, as: :date, html5: :true, label: false, hint: "Seit wann gibt es eure Band?"
+    .row
+      .col.col-lg-2
+        i.fa.fa-calendar.fa-2x
+      .col.col-lg-10
+        = f.input :event_color, input_html: { type: "color" }, hint: "Wähle deine Farbe für die Konzerte im Kalender aus", label: false
   .text-center
     = f.submit "Abschicken", class: "btn btn-secondary"
+

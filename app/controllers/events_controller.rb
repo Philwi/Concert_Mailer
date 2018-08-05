@@ -1,11 +1,12 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in
 
   # GET /events
   # GET /events.json
   def index
     @events = Event.where(band_id: Band.where(user_id: current_user.id))
-    @events = @events.where('start_time >= ? ', Time.zone.now)
+    @events = @events.where('start_time >= ? ', Time.zone.now).order("start_time")
     @band = Band.where(user_id: current_user.id)
   end
 
@@ -24,9 +25,6 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    respond_to do |format|
-      format.js
-    end
   end
 
   def calendar
@@ -43,14 +41,16 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    respond_to do |format|
+      format.js
+    end
   end
 
   # POST /events
   # POST /events.json
   def create
     @event = Event.new(event_params)
-    @event.band_id = Band.where(user_id: current_user.id).first.id
-
+    @event.band_id = params[:event][:band_id]
     if @event.save
       respond_to do |format|
         format.js {
@@ -73,13 +73,11 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+    if @event.update(event_params)
+      respond_to do |format|
+        format.js {
+          render 'calendar'
+        }
       end
     end
   end
@@ -103,4 +101,8 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:title, :description, :start_time, :end_time, :location, :bands, :link)
     end
+  protected
+  def logged_in
+    redirect_to "/" unless user_signed_in?
+  end
 end

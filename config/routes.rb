@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :events, only: [:index, :new, :destroy, :show]
+  resources :events, only: [:index, :new, :destroy,:edit, :update]
   post "events/create", to: "events#create", as: :create_event
   get "event/search/", to: "events#search"
   get 'bands/edit'

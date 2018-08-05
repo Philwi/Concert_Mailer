@@ -1,4 +1,5 @@
 class BandsController < ApplicationController
+  before_action :logged_in
   def new
     @band = Band.new
   end
@@ -26,9 +27,20 @@ class BandsController < ApplicationController
     end
   end
 
+  def destroy
+    @band = Band.find(params[:id])
+    @band.destroy
+    redirect_to dashboard_path
+  end
+
   private
   def band_params
-    params.require(:band).permit(:id,:name, :ort, :bandcamp, :website, :gründung, :email, :telefon)
+    params.require(:band).permit(:id,:name, :ort, :bandcamp, :website, :gründung, :email, :telefon, :event_color)
+  end
+  protected
+
+  def logged_in
+    redirect_to "/" unless user_signed_in?
   end
 
 end

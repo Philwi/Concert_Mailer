@@ -10,6 +10,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 Rails.application.config.assets.precompile += %w( landing_page.scss )
 Rails.application.config.assets.precompile += %w( landing_page.js )
+Rails.application.config.assets.precompile += %w( application-print.css )
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
