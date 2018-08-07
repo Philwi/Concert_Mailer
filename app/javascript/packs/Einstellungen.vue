@@ -6,7 +6,4 @@
 <script></script>
 
 <style lang="scss">
-  .test {
-    color: white;
-  }
 </style>

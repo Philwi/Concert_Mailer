@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :bookers
   resources :events, only: [:index, :new, :destroy,:edit, :update]
   post "events/create", to: "events#create", as: :create_event
   get "event/search/", to: "events#search"

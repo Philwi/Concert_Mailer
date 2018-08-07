@@ -1,0 +1,19 @@
+h1 Listing bookers
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @bookers.each do |booker|
+      tr
+        td = link_to 'Show', booker
+        td = link_to 'Edit', edit_booker_path(booker)
+        td = link_to 'Destroy', booker, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Booker', new_booker_path

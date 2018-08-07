@@ -8,16 +8,11 @@
 // layout file, like app/views/layouts/application.html.erb
 
 console.log('Hello World from Webpacker')
-//= require jquery3
-//= require popper
-//= require bootstrap
-//= require jquery
-//= require jquery_ujs
-
 import Vue from 'vue'
 import $ from 'jquery'
 import Kontakte from './Kontakte.vue'
-import Einstellungen from './Einstellungen.vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.js'
 
 if (!('jQuery' in window)) {
   window.jQuery = $
@@ -28,11 +23,6 @@ $(window).on('load',function(){
   var kontakte = new Vue({
     el: '#kontakte',
     render: h => h(Kontakte)
-  });
-
-  var einstellungen = new Vue({
-    el: '#einstellungen',
-    render: h => h(Einstellungen)
   });
 
 })
