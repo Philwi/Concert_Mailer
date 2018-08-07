@@ -13,6 +13,9 @@ import $ from 'jquery'
 import Kontakte from './Kontakte.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 if (!('jQuery' in window)) {
   window.jQuery = $

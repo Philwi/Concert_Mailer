@@ -4,7 +4,7 @@ class BookersController < ApplicationController
   # GET /bookers
   # GET /bookers.json
   def index
-    @bookers = Booker.all
+    @bookers = Booker.all.order(:land,:stadt,:club)
   end
 
   # GET /bookers/1
