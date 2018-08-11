@@ -13,8 +13,9 @@ module.exports = {
       loaders: {
         sass: 'vue-style-loader!css-loader!postcss-loader!sass-loader?indentedSyntax',
         js: 'babel-loader',
-        scss: 'vue-style-loader!css-loader!postcss-loader!sass-loader',
+        scss: 'vue-style-loader!css-loader!postcss-loader!sass-loader!stylus-loader',
         pug: 'pug-plain-loader'
+
       }
     }
   }]

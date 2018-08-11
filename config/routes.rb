@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :mailings
   resources :bookers
   resources :events, only: [:index, :new, :destroy,:edit, :update]
   post "events/create", to: "events#create", as: :create_event
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
+  post 'mailings/mailing', to: 'mailings#mailing'
 
   get "dashboard", to: "dashboard#index", as: :dashboard
   get "/", to: "landing_page#index"
