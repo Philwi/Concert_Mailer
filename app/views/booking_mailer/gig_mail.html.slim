@@ -1,0 +1,15 @@
+p = @body
+
+- unless @band.bandcamp.blank?
+  br
+  b Bandcamp:
+  p = @band.bandcamp
+- unless @band.telefon.blank?
+  br
+  b Telefon:
+  p = @band.telefon
+- unless @band.website.blank?
+  br
+  b Website:
+  p = @band.website
+

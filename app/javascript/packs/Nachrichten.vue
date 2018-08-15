@@ -23,13 +23,16 @@
         deliverQuestion
       template(v-if="state == 'success'")
         successForm
+      template(v-if="state == 'fail'")
+        failForm
 </template>
 
 <script>
-import tableBookers from './Table.vue';
-import messageForm from './messageForm.vue';
-import deliverQuestion from './deliverQuestion.vue';
-import successForm from './successForm.vue';
+import tableBookers from './components/Nachrichten/Table.vue';
+import messageForm from './components/Nachrichten/messageForm.vue';
+import deliverQuestion from './components/Nachrichten/deliverQuestion.vue';
+import successForm from './components/Nachrichten/successForm.vue';
+import failForm from './components/Nachrichten/failForm.vue';
 import { eventBus} from './application';
 export default {
   name: 'Nachrichten',
@@ -37,7 +40,8 @@ export default {
     tableBookers,
     messageForm,
     deliverQuestion,
-    successForm
+    successForm,
+    failForm
   },
   data() {
     return {
@@ -46,8 +50,9 @@ export default {
       state: 'table',
       body: '',
       subject: '',
+      band: '',
       bookers: [],
-      getResponse: false
+      getResponse: ''
     }
   },
   methods: {
@@ -74,6 +79,9 @@ export default {
     eventBus.$on('bookers', (data) => {
       this.bookers = data;
     });
+    eventBus.$on('band', (data) => {
+      this.band = data;
+    });
   },
   watch:
   {
@@ -84,9 +92,9 @@ export default {
         for (i = 0; i < this.bookers.length; i++){
           bookers.push(this.bookers[i]["id"]);
         }
-        console.log(bookers);
         var csrf = (document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
         var formData = new FormData();
+        formData.append('band', this.band);
         formData.append('body', this.body);
         formData.append('subject', this.subject);
         formData.append('veranstalter', bookers);
@@ -94,7 +102,7 @@ export default {
         this.$http.post( 'mailings/mailing', formData).then(response => {
           this.getResponse = true;
         }, response => {
-          this.ajaxRequest = false;
+          this.getResponse = false;
         });
       }
     },
@@ -102,6 +110,10 @@ export default {
       if (this.getResponse == true){
         setTimeout(function(){
           this.state = 'success';
+        }.bind(this), 400)
+      }else if(this.getResponse == false){
+        setTimeout(function(){
+          this.state = 'fail';
         }.bind(this), 2000)
       }
     }
@@ -132,6 +144,9 @@ export default {
   background-color: #2B0764 !important;
   margin-bottom: 0px;
 
+}
+.mailing{
+  color: white;
 }
 
 </style>

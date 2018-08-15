@@ -1,18 +1,8 @@
 <template lang="pug">
 #booker
 
-  slideout-panel
-    panelform
+  slideout-panel(:booker="clickedBooker")
 
-  //input.form-control(type='text' v-model='stadt' autofocus='true' placeholder='Stadt')
-  //input.form-control(type='text' v-model='club' autofocus='true' placeholder='Club')
-  //input.form-control(type='text' v-model='email' autofocus='true' placeholder='E-Mail')
-  //input.form-control(type='text' v-model='homepage' autofocus='true' placeholder='Website')
-  //input.form-control(type='text' v-model='name' autofocus='true' placeholder='Kontaktperson')
-  //input.form-control(type='text' v-model='telefon' autofocus='true' placeholder='Telefon')
-  //input.form-control(type='text' v-model='bundesland' autofocus='true' placeholder='Bundesland')
-  //input.form-control(type='text' v-model='land' autofocus='true' placeholder='Land')
-  //input.form-control(type='text' v-model='plz' autofocus='true' placeholder='PLZ')
 
   .searchButtons
     .row
@@ -63,12 +53,16 @@
 
 </template>
 <script>
-import { vueSlideoutPanelService } from 'vue2-slideout-panel';
-import panelform from './panelform.vue';
+import panelform from './components/Veranstalter/panelform.vue';
+import editpanelform from './components/Veranstalter/editpanelform.vue';
+import deletepanel from './components/Veranstalter/deletepanel.vue';
+import { vueSlideoutPanelService, VueSlideoutPanel } from 'vue2-slideout-panel';
+import { eventBus } from './application';
 export default {
   name: 'booker',
   components: {
-    panelform
+    panelform,
+    'slideout-panel': VueSlideoutPanel
   },
   data() {
     return {
@@ -79,9 +73,14 @@ export default {
       booker: '',
       pageNumber: 0,
       pageRecordSize: 10,
+      refreshTable: '',
+      clickedBooker: '',
     }
   },
   created() {
+    eventBus.$on('state', (data) => {
+      this.refreshTable = data;
+    });
     this.fetchbooker();
   },
   methods: {
@@ -89,24 +88,6 @@ export default {
       fetch('bookers.json')
       .then((res) => { return res.json() })
       .then((res) => { this.bookers = res })
-    },
-    addbooker() {
-      this.$http.post('bookers.json', {title: this.booker}, {})
-        .then((res) => this.fetchbooker(), this.booker = '')
-        .catch((error) => console.log('Got a problem' + error));
-    },
-    deletebooker(booker_id) {
-      this.$http.delete('bookers/' + booker_id)
-        .then((res) => this.fetchbooker())
-        .catch((error) => console.log('Got a problem' + error));
-    },
-    toggleEdit: function(ev, booker) {
-      this.$http.put('bookers/' + booker.id, {editable: true})
-        .then((res) => this.fetchbooker())
-    },
-    editbooker(booker) {
-      this.$http.put('bookers/' + booker.id, {editable: false, title: booker.name })
-        .then((res) => this.fetchbooker())
     },
     nextPage(){
       this.pageNumber++;
@@ -119,11 +100,40 @@ export default {
     showPanel1() {
       vueSlideoutPanelService.show({
           component: 'panelform',
-          width: '500px', //customize the width
-          cssClass: 'panel-1-custom-class', //add a custom CSS class
+          width: '400px', //customize the width
+          cssClass: 'panelform-body', //add a custom CSS class
           props: {
             data: {
             }
+          }
+        })
+        .then(results => {
+          console.log('Results for panel 1:', results);
+        });
+    },
+    editbooker(booker) {
+      this.clickedBooker = booker;
+      vueSlideoutPanelService.show({
+          component: 'editpanelform',
+          width: '400px', //customize the width
+          cssClass: 'panelform-body', //add a custom CSS class
+          props: {
+              booker
+
+          }
+        })
+        .then(results => {
+          console.log('Results for panel 1:', results);
+        });
+    },
+    deletebooker(booker){
+      this.clickedBooker = booker;
+      vueSlideoutPanelService.show({
+          component: 'deletepanel',
+          width: '400px', //customize the width
+          cssClass: 'panelform-body', //add a custom CSS class
+          props: {
+              booker
           }
         })
         .then(results => {
@@ -170,6 +180,14 @@ export default {
       return this.filteredList.slice(start, end);
     },
   },
+  watch: {
+    refreshTable: function(){
+      if (this.refreshTable == 'success'){
+        this.fetchbooker();
+        this.refreshTable = '';
+      }
+    }
+  }
 }
 </script>
 
@@ -195,6 +213,7 @@ tbody{
   -webkit-box-shadow: 10px 10px 38px 0px rgba(0,0,0,0.75) !important;
   -moz-box-shadow: 10px 10px 38px 0px rgba(0,0,0,0.75) !important;
   box-shadow: 10px 10px 38px 0px rgba(0,0,0,0.75) !important;
+  color: white;
 }
 
 
@@ -211,5 +230,8 @@ tbody{
 .searchButtons ::placeholder{
   color:rgba(255,255,255,0.4) !important;
   text-transform: uppercase;
+}
+.panelform-body{
+  background-color: #0bc443;
 }
 </style>

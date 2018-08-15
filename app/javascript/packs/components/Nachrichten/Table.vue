@@ -48,7 +48,7 @@
 
 </template>
 <script>
-import { eventBus} from './application'
+import { eventBus} from './../../application'
 export default {
   name: 'tableBookers',
   components: {

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   post 'mailings/mailing', to: 'mailings#mailing'
 
+  patch 'bookers/update/:id', to: 'bookers#update'
+
   get "dashboard", to: "dashboard#index", as: :dashboard
   get "/", to: "landing_page#index"
   resources :users

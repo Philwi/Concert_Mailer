@@ -10,8 +10,12 @@ class MailingsController < ApplicationController
   def mailing
     @mailing = Mailing.new(mailing_params)
     @mailing.user_id = current_user.id
-    if @mailing.save
+    if @mailing.save && !params[:band].blank?
+      mailing_params[:veranstalter].split(',').each do |mail|
+        BookingMailer.with(user: current_user, veranstalter: Booker.find(mail), mail: @mailing, band: params[:band] ).gig_mail.deliver_now
+      end
     else
+      render_404
     end
   end
 

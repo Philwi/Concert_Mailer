@@ -2,7 +2,7 @@ class Band < ApplicationRecord
   belongs_to :user
   has_many :event
   validates :name, length: { minimum: 2}
-  validates :email, length: { minimum: 6}
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   before_save :set_color
 
   private

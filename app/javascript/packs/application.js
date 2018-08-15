@@ -18,7 +18,11 @@ import "vue-wysiwyg/dist/vueWysiwyg.css"
 import 'bootstrap/dist/js/bootstrap.js'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
 import { VueSlideoutPanel } from 'vue2-slideout-panel';
+import panelform from './components/Veranstalter/panelform'
+import editpanelform from './components/Veranstalter/editpanelform'
+import deletepanel from './components/Veranstalter/deletepanel'
 import wysiwyg from "vue-wysiwyg";
 import Resource from 'vue-resource';
 Vue.use(Resource);
@@ -26,6 +30,9 @@ export const eventBus = new Vue();
 
 Vue.use(wysiwyg, {});
 Vue.component('slideout-panel', VueSlideoutPanel);
+Vue.component('panelform', panelform);
+Vue.component('editpanelform', editpanelform);
+Vue.component('deletepanel', deletepanel);
 Vue.use(BootstrapVue);
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

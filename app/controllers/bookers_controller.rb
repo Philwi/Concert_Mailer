@@ -4,12 +4,13 @@ class BookersController < ApplicationController
   # GET /bookers
   # GET /bookers.json
   def index
-    @bookers = Booker.all.order(:land,:stadt,:club)
+    @bookers = Booker.where('active IS NOT false').order(:land,:stadt,:club)
   end
 
   # GET /bookers/1
   # GET /bookers/1.json
   def show
+    @booker = Booker.find(params[:id])
   end
 
   # GET /bookers/new
@@ -24,15 +25,14 @@ class BookersController < ApplicationController
   # POST /bookers
   # POST /bookers.json
   def create
-    @booker = Booker.new(booker_params)
-
+    @booker = Booker.new(booker_params_create)
+    @booker.user_id = current_user.id
     respond_to do |format|
       if @booker.save
-        format.html { redirect_to @booker, notice: 'Booker was successfully created.' }
-        format.json { render :show, status: :created, location: @booker }
+        format.html { redirect_to @booker, notice: 'Booker was successfully updated.' }
+        format.json { render :show, status: :ok, location: @booker }
       else
-        format.html { render :new }
-        format.json { render json: @booker.errors, status: :unprocessable_entity }
+        render_404
       end
     end
   end
@@ -41,7 +41,7 @@ class BookersController < ApplicationController
   # PATCH/PUT /bookers/1.json
   def update
     respond_to do |format|
-      if @booker.update(booker_params)
+      if @booker.update(booker_params_create)
         format.html { redirect_to @booker, notice: 'Booker was successfully updated.' }
         format.json { render :show, status: :ok, location: @booker }
       else
@@ -69,6 +69,9 @@ class BookersController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    def booker_params_create
+      params.permit(:stadt, :club, :email, :website, :homepage, :name, :telefon, :bundesland, :land, :plz, :active, :kommentar)
+    end
     def booker_params
       params.fetch(:booker, {})
     end

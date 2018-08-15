@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_11_094625) do
+ActiveRecord::Schema.define(version: 2018_08_15_170228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,35 @@ ActiveRecord::Schema.define(version: 2018_08_11_094625) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "audit_table_for_bookers", force: :cascade do |t|
+    t.string "stadt_new"
+    t.string "stadt_old"
+    t.string "club_new"
+    t.string "club_old"
+    t.string "homepage_new"
+    t.string "homepage_old"
+    t.string "email_new"
+    t.string "email_old"
+    t.string "telefon_new"
+    t.string "telefon_old"
+    t.string "bundesland_new"
+    t.string "bundesland_old"
+    t.string "land_new"
+    t.string "land_old"
+    t.string "plz_new"
+    t.string "plz_old"
+    t.boolean "active_new"
+    t.boolean "active_old"
+    t.string "action"
+    t.string "kommentar"
+    t.bigint "booker_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booker_id"], name: "index_audit_table_for_bookers_on_booker_id"
+    t.index ["user_id"], name: "index_audit_table_for_bookers_on_user_id"
   end
 
   create_table "bands", force: :cascade do |t|
@@ -61,6 +90,10 @@ ActiveRecord::Schema.define(version: 2018_08_11_094625) do
     t.datetime "updated_at", default: "2018-08-06 19:13:29", null: false
     t.float "lat"
     t.float "lng"
+    t.boolean "active"
+    t.text "kommentar"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_bookers_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -106,4 +139,5 @@ ActiveRecord::Schema.define(version: 2018_08_11_094625) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookers", "users"
 end

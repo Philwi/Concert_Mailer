@@ -8,6 +8,10 @@ class BandsController < ApplicationController
     @band = Band.where(user_id: current_user.id)
   end
 
+  def index
+    @band = Band.where(user_id: current_user.id)
+  end
+
   def create
     @band = Band.new(band_params)
     @band.user_id = current_user.id
