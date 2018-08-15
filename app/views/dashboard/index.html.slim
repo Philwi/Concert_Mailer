@@ -19,11 +19,11 @@ header
         .icon.fa.fa-address-book.fa-2x
         span Veranstalter
       li.mailings data-toggle="modal" data-target=".nachrichten_modal"
-        .icon.fa.fa-comment-o.fa-2x
+        .icon.fa.fa-envelope.fa-2x
         span Nachrichten
-      li.history data-toggle="modal" data-target=".history_modal"
+      li.statistiken data-toggle="modal" data-target=".statistiken_modal"
         .icon.fa.fa-align-left.fa-2x
-        span History
+        span Statistiken
       li.kalender data-toggle="modal" data-target=".kalender_modal"
         .icon.fa.fa-calendar.fa-2x
         span Kalender
@@ -44,7 +44,7 @@ header
 
 = render 'dashboard/actions/kontakte'
 = render 'dashboard/actions/nachrichten'
-= render 'dashboard/actions/history'
+= render 'dashboard/actions/statistiken'
 = render 'dashboard/actions/kalender'
 = render 'dashboard/actions/einstellungen'
 

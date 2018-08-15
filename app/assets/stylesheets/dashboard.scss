@@ -321,7 +321,7 @@ Background gradients & images
   background-image: url('http://www.tums-mc.de/img/points1.png'), linear-gradient(135deg,  #bbc0f7 30%,#2afcef 70%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bbc0f7', endColorstr='#2afcef',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
-.content nav.main-nav ul li.active.history {
+.content nav.main-nav ul li.active.statistiken {
   background: #1bc3ff; /* Old browsers */
   background: url('http://www.tums-mc.de/img/points1.png'), -moz-linear-gradient(-45deg,  #1bc3ff 30%, #48ded2 70%); /* FF3.6+ */
   background: url('http://www.tums-mc.de/img/points1.png'), -webkit-gradient(linear, left top, right bottom, color-stop(30%,#1bc3ff), color-stop(70%,#48ded2)); /* Chrome,Safari4+ */
