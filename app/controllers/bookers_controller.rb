@@ -41,6 +41,8 @@ class BookersController < ApplicationController
   # PATCH/PUT /bookers/1.json
   def update
     respond_to do |format|
+      @booker = Booker.find(params[:id])
+      @booker.user_id = current_user.id
       if @booker.update(booker_params_create)
         format.html { redirect_to @booker, notice: 'Booker was successfully updated.' }
         format.json { render :show, status: :ok, location: @booker }

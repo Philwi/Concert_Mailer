@@ -351,3 +351,8 @@ Background gradients & images
   background: url('http://www.tums-mc.de/img/points1.png'), linear-gradient(135deg,  #fecd32 30%,#f75e73 70%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fecd32', endColorstr='#f75e73',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
+
+.statistiken_charts .row{
+  position: relative;
+  height: 400px;
+}

@@ -1,7 +1,7 @@
 header
   ul.breadcrumbs
-    li
-      a href="#"  Dashboard
+    li.news data-toggle="modal" data-target=".news_modal"
+      p.d-inline style="color: #606770" News
     li
       a href="#"  Kontakt
     li
@@ -47,6 +47,7 @@ header
 = render 'dashboard/actions/statistiken'
 = render 'dashboard/actions/kalender'
 = render 'dashboard/actions/einstellungen'
+= render 'dashboard/actions/news'
 
 javascript:
   $('.main-nav ul li').click(function() {

@@ -1,12 +1,29 @@
 .modal.fade.bd-example-modal-lg.statistiken_modal aria-hidden="true" aria-labelledby="myLargeModalLabel" role="dialog" tabindex="-1"
   .modal-dialog.modal-lg.modal-dialog-centered
     .modal-content style="background-color: #59b8c6;"
-      .modal-body
+      .modal-body style="overflow:auto; height: 400px;"
         button.close aria-label="Close" data-dismiss="modal" type="button"
           span aria-hidden="true"  &times;
-        p
-          | heyyy, hier wird ziemlich viel content stehen. lool
-        h3
-          | alles mögliche z.B.
-        b
-          | alle Konzertveranstalter
+
+        .statistiken_charts
+          .row
+            .col.col-lg-4
+              h5 style=("position: relative; top: 35%") Es fehlen noch einige E-Mails von den Veranstaltern
+            .col.col-lg-8
+              = pie_chart email_null_charts_path
+
+          .row
+            = area_chart Booker.where('created_at IS NOT NULL').group('DATE(created_at)').count, title: "Veranstalter zuletzt angelegt"
+
+          .row
+            = bar_chart Mailing.where('created_at IS NOT NULL').group('DATE(created_at)').count, title: "Nachrichten-Tool pro Tag in Nutzung"
+          .row
+            = column_chart email_to_booker_charts_path, title: "Versandte E-Mails pro Tag"
+
+          .row
+            = pie_chart Booker.where('bundesland IS NOT NULL').group(:bundesland).count, title: "Veranstalter nach Bundesland", donut: true, height: "400px"
+
+          .row
+            = pie_chart Booker.where('land IS NOT NULL').group(:land).count, title: "Veranstalter nach Land", donut: true, height: "400px"
+
+

@@ -1,22 +1,24 @@
-table.table.table-striped.all_concerts style="color: white;"
-  thead
-    tr
-      th Name
-      th Ort
-      th Beschreibung
-      th Bands
-      th Datum
-      th
-      th
+.row
+  .col.col-lg-12
+    table.table.table-striped.all_concerts style="color: black; background-color: whitesmoke "
+      thead
+        tr
+          th Name
+          th Ort
+          th Beschreibung
+          th Bands
+          th Datum
+          th
+          th
 
-  tbody
-    - @events.each do |event|
-      tr
-        td = event.title
-        td = event.location
-        td = event.description
-        th = event.bands
-        td = event.start_time.strftime("%d.%m.%Y")
-        td = link_to 'Anzeigen', edit_event_path(event), class: "btn btn-success", remote: true
-        td = link_to 'Löschen', event, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger", remote: true
+      tbody
+        - @events.each do |event|
+          tr
+            td = event.title
+            td = event.location
+            td = event.description
+            th = event.bands
+            td = event.start_time.strftime("%d.%m.%Y")
+            td = link_to 'Anzeigen', edit_event_path(event), class: "btn btn-success", remote: true
+            td = link_to 'Löschen', event, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger", remote: true
 

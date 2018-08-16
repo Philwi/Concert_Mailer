@@ -86,13 +86,13 @@ ActiveRecord::Schema.define(version: 2018_08_15_170228) do
     t.string "bundesland"
     t.string "land"
     t.string "plz"
-    t.datetime "created_at", default: "2018-08-06 19:13:29", null: false
-    t.datetime "updated_at", default: "2018-08-06 19:13:29", null: false
     t.float "lat"
     t.float "lng"
     t.boolean "active"
     t.text "kommentar"
     t.bigint "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["user_id"], name: "index_bookers_on_user_id"
   end
 

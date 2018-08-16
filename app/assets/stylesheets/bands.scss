@@ -10,22 +10,39 @@
   width: 85%;
   padding: 3px;
   margin-top: 5px;
-  color: grey;
+  background: none;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid;
+  color: white
 }
 
+.custom_band_form input::placeholder {
+  color: whitesmoke;
+}
 .custom_band_form textarea{
   width: 85%;
   padding: 3px;
   margin-top: 5px;
+  background: none;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid;
+  color: white
 
 }
+.custom_band_form textarea::placeholder{
+  color: whitesmoke;
+}
 
-.custom_band_form i{
-  margin-left: 90px;
-  margin-top: 7px;
-
+.custom_band_form .col-lg-2{
+  text-align: center;
 }
 
 #Band{
   color: black;
+}
+[class^="icon-"], [class*=" icon-"] {
+    display: inline-block;
+    width: 100%;
 }

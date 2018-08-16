@@ -1,0 +1,15 @@
+h5
+  | Diese E-Mails sind 2 oder mehreren Clubs zugeordnet. Es wäre super, wenn du dich darum kümmern könntest, dass nur die richtigen Einträge in der Datenbank sind und die überflüssigen gelöscht werden. Sonst würden mehrere E-Mails an die jeweiligen Veranstalter geschickt werden...
+.news-table-important-to-edit
+  table.table.table-hover.table-dark
+    thead
+      th Club
+      th E-Mail
+      th Stadt
+      th Bundesland
+    = @booker_to_edit.each do |booker|
+      tr
+        td = booker['club']
+        td = booker['email']
+        td = booker['stadt']
+        td = booker['bundesland']
