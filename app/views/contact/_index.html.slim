@@ -1,0 +1,30 @@
+.kontaktanfrage
+  .text-center
+    h3
+      | Sende mir eine Nachricht
+  .body-kontaktanfrage style="margin-top: 5%"
+    = simple_form_for :kontaktanfrage, url: contact_mailing_path do |f|
+      = f.input :subject, as: :string, placeholder: "Betreff", label: false
+      = f.input :body, as: :text, placeholder: "Weshalb schreibst du mir?", label: false, input_html: { rows: 7 }
+      .text-center
+        = f.button :submit, "Abschicken", class: "btn btn-secondary submit-button-kontaktanfrage"
+
+
+javascript:
+  $(document).on('click','.submit-button-kontaktanfrage', function(e){
+    var errorLog = 'Bitte folgende Fehler beheben: \n';
+    var send = true;
+    if ($('#kontaktanfrage_subject').val().length < 3){
+      errorLog += '\tTitel eintragen\n';
+      e.preventDefault();
+      send = false;
+    };
+    if ($('#kontaktanfrage_body').val().length < 3){
+      errorLog += '\tText eintragen\n';
+      e.preventDefault();
+      send = false;
+    };
+    if (send == false){
+      alert(errorLog);
+    };
+    });

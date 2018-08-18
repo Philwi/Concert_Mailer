@@ -1,5 +1,18 @@
-.text-right
-  = select_tag "Band", options_from_collection_for_select(@band, "id", "name")
+.text-center
+  = select_tag "Band", options_from_collection_for_select(@band, "id", "name"), include_blank: 'Band auswählen'
 
 .js-lazy-load-band-edit
+  .text-band-edit-description
+    .card
+      .card-body
+        .card-title
+          h4
+            | Wähle deine Band aus um diese zu editieren.
+        p
+          | Deine eingegebenen Daten haben Einfluss darauf, was bei der Kontaktaufnahme mit dem Veranstalter angezeigt wird.
+        p
+          | So wird beispielsweise dein Bandcamp Link mit angegeben.
+
+    .card-img-bottom
+      = image_tag("einstellungen", class: "card-img-bottom")
 

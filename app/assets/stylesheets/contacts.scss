@@ -1,0 +1,23 @@
+.kontaktanfrage{
+  margin: 5% 7%;
+}
+
+#kontaktanfrage_subject{
+  color: black !important;
+  border: none !important;
+  border-bottom: 1px solid black !important;
+  border-radius: 0 !important;
+  text-align: center;
+}
+#kontaktanfrage_subject::placeholder{
+  color: grey !important;
+  text-transform: none;
+}
+#kontaktanfrage_body textarea{
+  color: black !important;
+}
+#kontaktanfrage_body::placeholder{
+  color: grey !important;
+  text-transform: none;
+}
+

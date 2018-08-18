@@ -1,35 +1,51 @@
 // Place all the styles related to the bands controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.input-band-form-group{
+  position: relative;
+}
 
 .custom_band_form{
   margin-top: 10px;
-  color: white;
+  color: #739eb7;
+
 }
+
 .custom_band_form input {
-  width: 85%;
+  width: 100%;
   padding: 3px;
   margin-top: 5px;
   background: none;
   border: none;
   border-radius: 0;
   border-bottom: 1px solid;
-  color: white
+  font-family: 'bubblegum sans';
+  font-size: 23px;
+  color: #739eb7;
 }
 
 .custom_band_form input::placeholder {
-  color: whitesmoke;
+  color: #94cae9;
+  font-family: 'bubblegum sans'
 }
 .custom_band_form textarea{
-  width: 85%;
+  width: 100%;
   padding: 3px;
   margin-top: 5px;
   background: none;
   border: none;
   border-radius: 0;
   border-bottom: 1px solid;
-  color: white
+  color: white;
+  font-family: 'bubblegum sans';
+  font-size: 23px;
 
+}
+.custom_band_form i{
+  position: absolute;
+  right: 0;
+  text-align: center;
+  width: 8%
 }
 .custom_band_form textarea::placeholder{
   color: whitesmoke;
@@ -40,9 +56,22 @@
 }
 
 #Band{
-  color: black;
+border: none;
+background: none;
+width: 60%;
+text-align: center;
+color: white;
+font-weight: 600;
+font-size: 22px;
+padding: 2px 0px;
+font-family: 'bubblegum sans';
+margin-top: 2%;
 }
 [class^="icon-"], [class*=" icon-"] {
     display: inline-block;
     width: 100%;
+}
+.text-band-edit-description{
+  color: #739eb7;
+  margin: 8% 20%;
 }

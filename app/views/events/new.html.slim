@@ -1,43 +1,36 @@
 = simple_form_for @event, url: create_event_path(format: :js), remote: true do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-
-  .form-inputs
-    = f.input :band_id, collection: @band, include_blank: false, include_hidden: false, label: "Für welche Band?"
-    .custom_band_form
-      .row
-        .col.col-lg-2
-          i.fa.fa-user.fa-2x
-        .col.col-lg-10
-          = f.input :title, label: false, placeholder: "Name der Veranstaltung"
-      .row
-        .col.col-lg-2
-          i.fa.fa-align-left.fa-2x
-        .col.col-lg-10
-          = f.input :description, label: false, placeholder: "Beschreibung der Veranstaltung"
-      .row
-        .col.col-lg-2
-          i.fa.fa-map-marker.fa-2x
-        .col.col-lg-10
-          = f.input :location, label: "Ort", label: false, placeholder: "Ort der Veranstaltung"
-      .row
-        .col.col-lg-2
-          i.fa.fa-sign-language.fa-2x
-        .col.col-lg-10
-          = f.input :bands, label: false, placeholder: "Teilnehmende Bands"
-      .row
-        .col.col-lg-2
-          i.fa.fa-link.fa-2x
-        .col.col-lg-10
-          = f.input :link, label: false, placeholder: "Link zur Veranstaltung"
-      .row
-        .col.col-lg-2
-          i.fa.fa-calendar.fa-2x
-        .col.col-lg-10
-          = f.input :start_time,as: :date, html5: true, label: false,hint: "Wann findet das Konzert statt?"
-
-  .text-center
-    = f.button :submit, "Erstelle Kalendereintrag", class: "btn btn-secondary"
+  .text-event-edit-description
+    .card
+      .card-body
+        .card-title
+          h4
+            | Kalendereintrag erstellen
+        .form-inputs
+          = f.input :band_id, collection: @band, include_blank: false, include_hidden: false, label: "Für welche Band?"
+          .custom_event_form
+            .input-event-form-group
+                i.fa.fa-user.fa-2x
+                = f.input :title, label: false, placeholder: "Name der Veranstaltung"
+            .input-event-form-group
+                i.fa.fa-align-left.fa-2x
+                = f.input :description, label: false, placeholder: "Beschreibung der Veranstaltung"
+            .input-event-form-group
+                i.fa.fa-map-marker.fa-2x
+                = f.input :location, label: "Ort", label: false, placeholder: "Ort der Veranstaltung"
+            .input-event-form-group
+                i.fa.fa-sign-language.fa-2x
+                = f.input :bands, label: false, placeholder: "Teilnehmende Bands"
+            .input-event-form-group
+                i.fa.fa-link.fa-2x
+                = f.input :link, label: false, placeholder: "Link zur Veranstaltung"
+            .input-event-form-group
+                i.fa.fa-calendar.fa-2x
+                = f.input :start_time,as: :date, html5: true, label: false,hint: "Wann findet das Konzert statt?"
+      .card-footer
+        .text-center
+          = f.button :submit, "Erstelle Kalendereintrag", class: "btn btn-secondary"
 
 br
 .text-center

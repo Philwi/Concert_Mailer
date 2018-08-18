@@ -1,40 +1,37 @@
 h2 Edit = resource_name.to_s.humanize
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-	= f.error_notification
-	.form-inputs
-    .custom_band_form
-      .row
-        .col.col-lg-2
-          i.fa.fa-user.fa-2x
-        .col.col-lg-10
-          = f.input_field :name, required: true, placeholder: "Name"
-      .row
-        .col.col-lg-2
-          i.fa.fa-envelope.fa-2x
-        .col.col-lg-10
-          = f.input :email, required: true, autofocus: true, label: false, placeholder: "E-Mail"
-      .row
-        .col.col-lg-2
-          i.fa.fa-unlock-alt.fa-2x
-        .col.col-lg-10
-          = f.input :password,label: "Passwort", autocomplete: "off", hint: "Wenn das Passwort nicht geändert werden soll, dann bitte leer lassen", required: false, label: false, placeholder:"Passwort - Um das Passwort zu ändern"
-      .row
-        .col.col-lg-2
-          i.fa.fa-unlock.fa-2x
-        .col.col-lg-10
-          = f.input :password_confirmation, label: "Passwort wiederholen", required: false, label: false, placeholder: "Passwort wiederholen - Um das Passwort zu ändern"
-      .row
-        .col.col-lg-2
-          i.fa.fa-key.fa-2x
-        .col.col-lg-10
-          = f.input :current_password,label: "Aktuelles Password", hint: "Wir brauchen ihr aktuelles Passwort um die Änderungen zu bestätigen", required: true, label: false, placeholder: "Passwort zum bestätigen der Änderungen"
-		= if devise_mapping.confirmable? && resource.pending_reconfirmation?
-			p Currently waiting confirmation for: = resource.unconfirmed_email
-				end
-	.form-actions
-    .text-center
-      = f.button :submit, "Ändern", class: "btn btn-secondary"
-	//h3 Cancel my account
-	//p Unhappy?
-	//= link_to "Cancel my account", registration_path(resource_name), data: {confirm: "Are you sure?"  }, method: :delete
-	//= link_to "Back", :back
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, validate: true) do |f|
+  = f.error_notification
+  .text-band-edit-description style="margin-top: 2%"
+    .card
+      .card-body
+        .form-inputs
+          .custom_band_form
+            .input-band-form-group
+              i.fa.fa-user.fa-2x
+              = f.input_field :name, required: true, placeholder: "Name"
+            .input-band-form-group
+              i.fa.fa-envelope.fa-2x
+              = f.input :email, required: true, autofocus: true, label: false, placeholder: "E-Mail"
+            .input-band-form-group
+              i.fa.fa-unlock-alt.fa-2x
+              = f.input :password,label: "Passwort", autocomplete: "off", hint: "Wenn das Passwort nicht geändert werden soll, dann bitte leer lassen", required: false, label: false, placeholder:"Passwort - Um das Passwort zu ändern"
+            .input-band-form-group
+              i.fa.fa-unlock.fa-2x
+              = f.input :password_confirmation, label: "Passwort wiederholen", required: false, label: false, placeholder: "Passwort wiederholen", hint: "Um das aktuelle Passwort zu ändern."
+            .input-band-form-group
+              i.fa.fa-key.fa-2x
+              = f.input :current_password,label: "Aktuelles Password", hint: "Wir brauchen ihr aktuelles Passwort um die Änderungen zu bestätigen", required: true, label: false, placeholder: "Aktuelles Passwort zum Bestätigen", validate: { presence: true }
+              = if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                p Currently waiting confirmation for: = resource.unconfirmed_email
+                  end
+        .form-actions
+          .text-center
+            = f.button :submit, "Ändern", class: "btn btn-secondary submit-button-user"
+        //h3 Cancel my account
+        //p Unhappy?
+        //= link_to "Cancel my account", registration_path(resource_name), data: {confirm: "Are you sure?"  }, method: :delete
+        //= link_to "Back", :back
+
+
+
+

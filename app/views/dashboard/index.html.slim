@@ -2,8 +2,8 @@ header
   ul.breadcrumbs
     li.news data-toggle="modal" data-target=".news_modal"
       p.d-inline style="color: #606770" News
-    li
-      a href="#"  Kontakt
+    li.contact data-toggle="modal" data-target=".kontaktanfrage_modal"
+      p.d-inline style="color: #606770" Kontakt
     li
       = link_to "Logout", destroy_user_session_path(current_user), method: :delete
 
@@ -48,6 +48,7 @@ header
 = render 'dashboard/actions/kalender'
 = render 'dashboard/actions/einstellungen'
 = render 'dashboard/actions/news'
+= render 'dashboard/actions/contact'
 
 javascript:
   $('.main-nav ul li').click(function() {

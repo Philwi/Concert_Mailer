@@ -1,15 +1,34 @@
-h5
-  | Diese E-Mails sind 2 oder mehreren Clubs zugeordnet. Es wäre super, wenn du dich darum kümmern könntest, dass nur die richtigen Einträge in der Datenbank sind und die überflüssigen gelöscht werden. Sonst würden mehrere E-Mails an die jeweiligen Veranstalter geschickt werden...
-.news-table-important-to-edit
-  table.table.table-hover.table-dark
-    thead
-      th Club
-      th E-Mail
-      th Stadt
-      th Bundesland
-    = @booker_to_edit.each do |booker|
-      tr
-        td = booker['club']
-        td = booker['email']
-        td = booker['stadt']
-        td = booker['bundesland']
+.news
+  .card
+    .card-body
+      .card-title
+        h3 = "#{@booker_to_edit.count} Veranstalter mit mehrmalig vergebener E-Mail!"
+      p
+        | Es wäre super, wenn du ein paar Veranstalter anpassen könntest und so dafür sorgst, dass unsere Daten sich nicht doppeln. Da sonst die Veranstalter mit doppelten Mails zugebombt werden würden.
+      p
+        | Wenn du viele Veranstalter noch hinzufügen möchtest und diese halbwegs mit Excel aufbereit sind, kannst du mir die Datei auch über das Kontaktformular schicken.
+      .news-table-important-to-edit
+        table.table.table-hover.table-dark
+          thead
+            th Club
+            th E-Mail
+            th Stadt
+            th Bundesland
+          - @booker_to_edit.each do |booker|
+            tr
+              td = booker['club']
+              td = booker['email']
+              td = booker['stadt']
+              td = booker['bundesland']
+
+  - if @news.count > 0
+    - @news.each do |new|
+      .card
+        .card-body
+          .card-title
+            h3 = new.headline
+          p = new.body
+        .card-footer
+          .text-right
+            small = "Erstellt am: #{new.created_at.to_date}"
+

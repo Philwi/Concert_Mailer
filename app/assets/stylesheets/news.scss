@@ -1,5 +1,19 @@
 .news-table-important-to-edit th{
   font-weight: 600;
-  font-transformation: uppercase;
+  text-transform: uppercase !important;
+}
+.news-table-important-to-edit{
+  color: white;
+}
+.news .card{
+  background: none;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 5%;
+  box-shadow: 10px 12px 65px 0px rgba(162, 193, 216, 0.8);
+}
 
+.news #text{
+  color: white;
 }

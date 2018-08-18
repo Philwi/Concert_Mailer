@@ -1,47 +1,35 @@
 = simple_form_for @band do |f|
-  .custom_band_form
-    .row
-      .col.col-lg-2
-        i.fa.fa-user.fa-2x
-      .col.col-lg-10
-        = f.input_field :name, required: true, placeholder: "Name"
-    .row
-      .col.col-lg-2
-        i.fa.fa-map-marker.fa-2x
-      .col.col-lg-10
-        = f.input_field :ort, placeholder: "Von wo kommt ihr her?"
-    .row
-      .col.col-lg-2
-        i.fa.fa-headphones.fa-2x
-      .col.col-lg-10
-        = f.input_field :bandcamp, placeholder: "Bandcamp Link"
-    .row
-      .col.col-lg-2
-        i.fa.fa-home.fa-2x
-      .col.col-lg-10
-        = f.input_field :website, placeholder: "Eure Website"
-    .row
-      .col.col-lg-2
-        i.fa.fa-envelope.fa-2x
-      .col.col-lg-10
-        = f.input_field :email, required: true, placeholder: "Eure Band E-mail"
-    .row
-      .col.col-lg-2
-        i.fa.fa-phone.fa-2x
-      .col.col-lg-10
-        = f.input_field :telefon, placeholder: "Telefon"
-    .row
-      .col.col-lg-2
-        i.fa.fa-birthday-cake.fa-2x
-      .col.col-lg-10
-        = f.input :gründung, as: :date, html5: :true, label: false, hint: "Seit wann gibt es eure Band?"
-    .row
-      .col.col-lg-2
-        i.fa.fa-calendar.fa-2x
-      .col.col-lg-10
-        = f.input :event_color, input_html: { type: "color" }, hint: "Wähle deine Farbe für die Konzerte im Kalender aus", label: false
-    = f.input :id, as: :hidden, value: "#{current_user.id}"
-  .text-center
-    = f.submit "Ändern", class: "btn btn-secondary"
-    = link_to band_path(@band), method: :delete, class: "btn btn-danger"
-      | Löschen
+  .settings
+    .text-band-edit-description style="margin-top: 2%"
+      .card
+        .card-body
+          .custom_band_form
+            .input-band-form-group
+              i.fa.fa-user.fa-2x
+              = f.input_field :name, required: true, placeholder: "Name", input_html: { required: true }, class: "band_name"
+            .input-band-form-group
+              i.fa.fa-map-marker.fa-2x
+              = f.input_field :ort, placeholder: "Von wo kommt ihr her?"
+            .input-band-form-group
+              i.fa.fa-headphones.fa-2x
+              = f.input_field :bandcamp, placeholder: "Bandcamp Link"
+            .input-band-form-group
+              i.fa.fa-home.fa-2x
+              = f.input_field :website, placeholder: "Eure Website"
+            .input-band-form-group
+              i.fa.fa-envelope.fa-2x
+              = f.input_field :email, required: true, placeholder: "Eure Band E-mail"
+            .input-band-form-group
+              i.fa.fa-phone.fa-2x
+              = f.input_field :telefon, placeholder: "Telefon"
+            .input-band-form-group
+              i.fa.fa-birthday-cake.fa-2x
+              = f.input :gründung, as: :date, html5: :true, label: false, hint: "Seit wann gibt es eure Band?"
+            .input-band-form-group
+              i.fa.fa-calendar.fa-2x
+              = f.input :event_color, input_html: { type: "color" }, hint: "Wähle deine Farbe für die Konzerte im Kalender aus", label: false
+            = f.input :id, as: :hidden, value: "#{current_user.id}"
+          .text-center
+            = f.submit "Ändern", class: "btn btn-secondary submit-button-band"
+            = link_to band_path(@band), method: :delete, class: "btn btn-danger"
+              | Löschen

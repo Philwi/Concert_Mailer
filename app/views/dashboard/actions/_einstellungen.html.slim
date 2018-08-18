@@ -1,12 +1,12 @@
 .modal.fade.bd-example-modal-lg.einstellungen_modal aria-hidden="true" aria-labelledby="myLargeModalLabel" role="dialog" tabindex="-1"
   .modal-dialog.modal-lg.modal-dialog-centered
     .modal-content style="background-color: #739eb7;"
-      .modal-body style="min-height: 400px"
+      .modal-body style="height: 600px; overflow: auto;"
         button.close aria-label="Close" data-dismiss="modal" type="button"
           span aria-hidden="true"  &times;
         .text-center
 					.btn-group.btn-group-toggle data-toggle="buttons"
-						label.btn.btn-secondary.nutzer.active
+						label.btn.btn-secondary.nutzer
 							input#option1 autocomplete="off" checked="" name="options" type="radio" Nutzereinstellungen
 						label.btn.btn-secondary.band-bearbeiten
 							input#option2 autocomplete="off" name="options" type="radio" Bandeinstellungen
@@ -15,6 +15,22 @@
         .js-lazy-load-einstellungen-user
         .js-lazy-load-einstellungen-band-bearbeiten
         .js-lazy-load-einstellungen-band-create
+        .einstellungen-description
+          .text-band-edit-description
+            .card
+              .card-body
+                .card-title
+                  h4
+                    | Ändere deine Nutzereinstellungen, füge eine neue Band hinzu oder pass eine bestehende an
+                p
+                  | Je mehr Informationen wir über deine Band haben, desto mehr wird dem Veranstalter angezeigt
+                p
+                  | Es wäre auch gut, wenn du in die News schauen würdest. So kannst du z.B. erfahren, dass noch einige E-Mails doppelt vergeben sind und die Veranstalter so unnötig oft angeschrieben werden.
+                b
+                  | So wäre es sehr hilfreich, wenn du deinen Teil beitragen könntest und diese Veranstalter löschst und neue hinzufügst.
+
+            .card-img-bottom
+              = image_tag("main_einstellungen", class: "card-img-bottom")
 
         //#einstellungen
 
@@ -24,18 +40,21 @@ javascript:
 		$('.js-lazy-load-einstellungen-band-bearbeiten').hide();
 		$('.js-lazy-load-einstellungen-band-create').hide();
 		$('.js-lazy-load-einstellungen-user').show();
+		$('.einstellungen-description').hide();
 	})
   $('.band-bearbeiten').click(function(){
 		$('.js-lazy-load-einstellungen-band-bearbeiten').load("/bands/which_edit")
 		$('.js-lazy-load-einstellungen-user').hide();
 		$('.js-lazy-load-einstellungen-band-create').hide();
 		$('.js-lazy-load-einstellungen-band-bearbeiten').show();
+		$('.einstellungen-description').hide();
 	})
   $('.band-create').click(function(){
 		$('.js-lazy-load-einstellungen-band-create').load("/bands/new")
 		$('.js-lazy-load-einstellungen-user').hide();
 		$('.js-lazy-load-einstellungen-band-bearbeiten').hide();
 		$('.js-lazy-load-einstellungen-band-create').show();
+		$('.einstellungen-description').hide();
 	})
 
 
