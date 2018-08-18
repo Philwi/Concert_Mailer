@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :mailings
   resources :bookers
   resources :events, only: [:index, :new, :destroy,:edit, :update]

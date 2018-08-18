@@ -6,4 +6,8 @@ class User < ApplicationRecord
   has_many :bands
   has_many :mailings
   has_many :bookers
+
+  def is_admin?
+    self.admin
+  end
 end
