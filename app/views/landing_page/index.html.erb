@@ -15,6 +15,9 @@
         <%= link_to "Passwort vergessen?", new_password_path(@user), class: "forgot-pass" %>
       </p>
       <%= f.button :submit, "Log in", class: "submit" %>
+      <% if request.fullpath == ("/?error=%27passwordOrUsername%27") %>
+        <div class="notice" style="text-align: center; color: red; margin-top: 20px;"> <%= flash[:error] = "Passwort oder E-Mail verkehrt!" %></div>
+      <% end %>
     <% end %>
     </div>
     <div class="sub-cont">

@@ -6,13 +6,22 @@ class LandingPageController < ApplicationController
     @user = User.new
   end
 
+  def not_active
+
+  end
+
   private
   def user_params
     params.require(:users).permit(:email, :password, :name)
   end
 
   def go_to_dashboard
-    redirect_to(dashboard_path) if current_user
+    if current_user && current_user.active
+      redirect_to(dashboard_path)
+    end
+    if current_user && !current_user.active && request.fullpath != ("/not_active")
+       redirect_to "/not_active"
+     end
   end
 
   protected
