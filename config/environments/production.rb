@@ -26,6 +26,18 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'www.schlimm.de/mailer' }
 
+config.action_mailer.delivery_method = :smtp
+# SMTP settings for gmail
+config.action_mailer.smtp_settings = {
+ :address              => "smtp.gmail.com",
+ :port                 => 587,
+ :user_name            => ENV['gmail_username'],
+ :password             => ENV['gmail_password'],
+ :authentication       => "plain",
+:enable_starttls_auto => true
+}
+
+
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
