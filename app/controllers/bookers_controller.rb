@@ -43,6 +43,7 @@ class BookersController < ApplicationController
     respond_to do |format|
       @booker = Booker.find(params[:id])
       @booker.user_id = current_user.id
+      @booker.save_to_audit_before
       if @booker.update(booker_params_create)
         format.html { redirect_to @booker, notice: 'Booker was successfully updated.' }
         format.json { render :show, status: :ok, location: @booker }

@@ -1,14 +1,11 @@
 class Booker < ApplicationRecord
   belongs_to :user
   has_many :audit_table_for_Bookers
-  before_save :save_to_audit_before
   after_update :save_to_audit_after
   validates :stadt, presence: true;
   validates :club, presence: true;
   validates :email, presence: true;
   validates :land, presence: true;
-
-  private
 
   def save_to_audit_before
     @audit = AuditTableForBookers.new
@@ -27,8 +24,10 @@ class Booker < ApplicationRecord
       @audit.action = 'Delete'
       @audit.kommentar = self.kommentar
     end
-    @audit.save
+    @audit.save!
   end
+  private
+
   def save_to_audit_after
     @audit = AuditTableForBookers.last
     @audit.stadt_new = self.stadt
