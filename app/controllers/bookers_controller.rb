@@ -1,4 +1,5 @@
 class BookersController < ApplicationController
+  before_action :logged_in
   before_action :set_booker, only: [:show, :edit, :update, :destroy]
 
   # GET /bookers
@@ -78,4 +79,9 @@ class BookersController < ApplicationController
     def booker_params
       params.fetch(:booker, {})
     end
+  protected
+
+  def logged_in
+    redirect_to "/" unless user_signed_in?
+  end
 end

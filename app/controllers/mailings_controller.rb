@@ -1,5 +1,6 @@
 class MailingsController < ApplicationController
   before_action :set_mailing, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in
 
   # GET /mailings
   # GET /mailings.json
@@ -34,5 +35,10 @@ class MailingsController < ApplicationController
       sql = "SELECT club, email, stadt, bundesland FROM Bookers WHERE email IN (SELECT email FROM Bookers GROUP BY email HAVING COUNT(email) >= 2 AND email IS NOT NULL) AND NOT (active IS NULL OR active =  'false') ORDER BY email, club, stadt;"
       @booker_to_edit = ActiveRecord::Base.connection.execute(sql)
     end
+  protected
+
+  def logged_in
+    redirect_to "/" unless user_signed_in?
+  end
 
 end

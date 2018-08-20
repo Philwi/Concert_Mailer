@@ -1,4 +1,5 @@
 class ContactController < ApplicationController
+  before_action :logged_in
   def index
   end
 
@@ -11,5 +12,10 @@ class ContactController < ApplicationController
       flash[:error] = "Nachricht konnte nicht verschickt werden"
       redirect_to "/"
     end
+  end
+  protected
+
+  def logged_in
+    redirect_to "/" unless user_signed_in?
   end
 end

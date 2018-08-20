@@ -1,4 +1,5 @@
 class ChartsController < ApplicationController
+  before_action :logged_in
   def email_null
     @hash = { }
     null = Booker.where('Email IS NULL').count
@@ -26,4 +27,9 @@ class ChartsController < ApplicationController
 
   end
 
+  protected
+
+  def logged_in
+    redirect_to "/" unless user_signed_in?
+  end
 end

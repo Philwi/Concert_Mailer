@@ -21,7 +21,7 @@ class LandingPageController < ApplicationController
     end
     if current_user && !current_user.active && request.fullpath != ("/not_active")
        redirect_to "/not_active"
-     end
+    end
   end
 
   protected
