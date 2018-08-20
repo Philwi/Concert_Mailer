@@ -11,7 +11,7 @@ $(document).on('click','.submit-button-band', function(e){
     e.preventDefault();
     send = false;
   };
-  var emailVal = validateEmail($('.band_email').val());
+  var emailVal = validateEmail($('#band_email').val());
   if (!emailVal){
     errorLog += '\tE-Mail ist nicht korrekt\n';
     e.preventDefault();
