@@ -1,4 +1,4 @@
-Booker.create!([
+[
   {stadt: "awd", club: "awdawd", name: "awdaw", homepage: "awdawd", email: "awdawd@wad.de", telefon: "awdawd", bundesland: "awdaw", land: "dawdaw", plz: "awdawddd", lat: nil, lng: nil, active: false, kommentar: "", user_id: nil},
   {stadt: "Bischoffswerda", club: "Eastclub", name: "Eastclub", homepage: "east-club.de", email: "info@east-club.de", telefon: "null", bundesland: "Sachsen", land: "Deutschland", plz: "", lat: nil, lng: nil, active: true, kommentar: nil, user_id: nil},
   {stadt: "?", club: "test", name: "null", homepage: "https://www.facebook.com/dereu", email: "test@test.de", telefon: "null", bundesland: "null", land: "Belgien", plz: "null", lat: nil, lng: nil, active: true, kommentar: nil, user_id: nil},
@@ -1220,4 +1220,7 @@ Booker.create!([
   {stadt: "test", club: "test", name: "awd", homepage: "awd", email: "tes@tes.de", telefon: "awd", bundesland: "awd", land: "awd", plz: "awd", lat: nil, lng: nil, active: false, kommentar: "", user_id: nil},
   {stadt: "awd", club: "awd", name: "awd", homepage: "awd", email: "awd@wad.de", telefon: "awd", bundesland: "awd", land: "awd", plz: "awd", lat: nil, lng: nil, active: false, kommentar: "", user_id: nil},
   {stadt: "awd", club: "awd", name: "awda", homepage: "awdaw", email: "awd@awd.de", telefon: "awd", bundesland: "awd", land: "wda", plz: "awd", lat: nil, lng: nil, active: false, kommentar: "", user_id: nil}
-])
+].each do |booker_attr|
+  booker = Booker.new(booker_attr)
+  booker.save!(validate: false)
+end
