@@ -42,13 +42,13 @@
                 .text-center
                   h4
                     | Veranstalter nach Bundesland
-              = pie_chart Booker.where('bundesland IS NOT NULL').group(:bundesland).count, donut: true, height: "400px"
+              = pie_chart Booker.where('bundesland IS NOT NULL AND active = true').group(:bundesland).count, donut: true, height: "400px"
           .card
             .card-body
               .card-title
                 .text-center
                   h4
                     | Veranstalter nach Land
-              = pie_chart Booker.where('land IS NOT NULL').group(:land).count, donut: true, height: "400px"
+              = pie_chart Booker.where('land IS NOT NULL AND active = true').group(:land).count, donut: true, height: "400px"
 
 
