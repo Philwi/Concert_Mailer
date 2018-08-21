@@ -29,7 +29,7 @@
 /node_modules
 yarn-debug.log*
 .yarn-integrity
-.sw*
+*.sw*
 
 # Ignore application configuration
 /config/application.yml
