@@ -32,12 +32,6 @@ class LandingPageController < ApplicationController
     end
   end
 
-  def go_to_not_confirmed
-    if current_user && !current_user.active && current_user.confirmed_at.nil? && request.fullpath != ("/not_confirmed")
-       redirect_to "/not_confirmed"
-    end
-  end
-
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])

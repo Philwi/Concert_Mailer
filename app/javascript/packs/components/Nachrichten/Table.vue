@@ -7,13 +7,13 @@
   .searchButtons
     .row
       .col-md-4
-        form
+        form(@submit.prevent)
           input.form-control(type='text' v-model='searchCity' autofocus='true' placeholder='Stadt')
       .col-md-4
-        form
+        form(@submit.prevent)
           input.form-control(type='text' v-model='searchClub' autofocus='true' placeholder='Club')
       .col-md-4
-        form
+        form(@submit.prevent)
           input.form-control(type='text' v-model='searchBundesland' autofocus='true' placeholder='Bundesland')
   br
   #mailingTable.mailingTable

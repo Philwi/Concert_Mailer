@@ -15,8 +15,11 @@
         <%= link_to "Passwort vergessen?", new_password_path(@user), class: "forgot-pass" %>
       </p>
       <%= f.button :submit, "Log in", class: "submit" %>
-      <% if request.fullpath == ("/?error=%27passwordOrUsername%27") %>
-        <div class="notice" style="text-align: center; color: red; margin-top: 20px;"> <%= flash[:error] = "Passwort oder E-Mail verkehrt!" %></div>
+      <% if request.fullpath == ("/?error=%27passwordOrUsernameOrNotConfirmed%27") %>
+        <div class="notice" style="text-align: center; color: red; margin-top: 20px;"> <%= flash[:error] ="Passwort oder E-Mail verkehrt! Wenn du deine E-Mail noch nicht bestätigt hast, dann schau in dein Postfach nach." %></div>
+      <% end %>
+      <% if request.fullpath == ("/?error=%27SignUp%27") %>
+        <div class="notice" style="text-align: center; color: red; margin-top: 20px;"> <%= flash[:error] ="Bitte erneut anmelden. Deine Daten waren leider nicht korrekt." %></div>
       <% end %>
     <% end %>
     </div>
@@ -40,17 +43,21 @@
       <%= simple_form_for @user, url: user_registration_path, method: :post do |f| %>
         <label>
           <span>Name</span>
-          <%= f.input :name, label: false %>
+          <%= f.input :name, label: false, class: "signUpName" %>
         </label>
         <label>
           <span>Email</span>
-          <%= f.input :email, label: false %>
+          <%= f.input :email, label: false, class: "signUpEmail" %>
         </label>
         <label>
           <span>Password</span>
-          <%= f.input :password, label: false %>
+          <%= f.input :password, label: false, class: "signUpPassword" %>
         </label>
-        <%= f.button :submit, "Anmelden", class: "submit" %>
+        <%= f.button :submit, "Anmelden", class: "submit signUpSubmit" %>
+        <center>
+          <br>
+          <small>Eine E-Mail zur Bestätigung wird versendet!</small>
+        </center>
       <% end %>
     </div>
   </div>
