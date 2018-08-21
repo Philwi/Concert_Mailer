@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get "bands/which_edit", to: "bands#which_edit", as: :bands_which_edit
   get "calendar", to: "events#calendar", as: :calendar
   get "not_active", to: "landing_page#not_active"
+  get "not_confirmed", to: "landing_page#not_confirmed"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   match '*path', to: redirect('/'), via: :all
 end
