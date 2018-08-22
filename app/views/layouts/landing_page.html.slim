@@ -1,5 +1,6 @@
 html
   head
+    = analytics_init if GoogleAnalytics.valid_tracker?
     title
       | Concert Mailer
     = csrf_meta_tags
