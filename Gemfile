@@ -59,8 +59,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'letsencrypt-rails-heroku'
-
+  gem 'google-analytics-rails', '1.1.1'
 end
 
 group :development do

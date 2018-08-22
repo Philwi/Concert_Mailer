@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>ConcertMailer</title>
+    <%= analytics_init if GoogleAnalytics.valid_tracker? %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Luckiest+Guy" />
