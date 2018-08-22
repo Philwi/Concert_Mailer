@@ -1,0 +1,160 @@
+.pos-f-t
+  #navbarToggleExternalContent.collapse
+    .bg-dark.p-4
+      .text-center
+        .menu-eingabe-moble
+          h1.text-white.h2.veranstalter-mobile Veranstalter
+          h1.text-white.h2.nachrichten-mobile Nachrichten
+          h1.text-white.h2.statistiken-mobile Statistiken
+          h1.text-white.h2.kalender-mobile Kalender
+          h1.text-white.h2.einstellungen-mobile Einstellungen
+          h1.text-white.h2.news-mobile News
+          h1.text-white.h2.kontakt-mobile Kontakt
+  nav.navbar.navbar-dark.bg-dark
+    button.navbar-toggler aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarToggleExternalContent" data-toggle="collapse" type="button"
+      span.navbar-toggler-icon
+    h6 style="font-family: 'Luckiest Guy'; color: #FF9800; margin-top: 5%; font-size: 36px;"
+      | Konzert Mailer
+.js-lazy-loading-mobile-site
+
+
+
+  //News
+  .mobile-news
+    .js-lazy-loader-news style="background-color: rgba(255,255,255,0.8)"
+
+  //Kontaktanfrage
+  .mobile-kontakt style="background-color: rgba(255,255,255,0.8)"
+    = render "contact/index"
+
+  //Kalender
+  .mobile-kalender style="background-color: #e2446e;"
+    .js-lazy-loader-calendar
+      = render "events/calendar"
+
+  .mobile-statistiken style="background-color: #59b8c6;"
+    = render "statistiken"
+
+  .mobile-nachrichten style="background-color: #f7973d;"
+    #nachrichten
+
+  .mobile-veranstalter style="background-color: #0bc443;"
+    #kontakte
+
+
+
+
+
+//Einstellungen
+.mobile-einstellungen style="background-color: #739eb7;"
+  = render "einstellungen"
+
+javascript:
+
+  $('.einstellungen-mobile').click(function(){
+    $('.mobile-einstellungen').show();
+    $('.mobile-news').hide();
+    $('.mobile-kontakt').hide();
+    $('.mobile-kalender').hide();
+    $('.mobile-statistiken').hide();
+    $('.mobile-nachrichten').hide();
+    $('.mobile-veranstalter').hide();
+  });
+  $('.news-mobile').click(function(){
+    $('.mobile-einstellungen').hide();
+    $('.mobile-news').show();
+    $('.mobile-kontakt').hide();
+    $('.mobile-kalender').hide();
+    $('.mobile-statistiken').hide();
+    $('.mobile-nachrichten').hide();
+    $('.mobile-veranstalter').hide();
+  });
+  $('.kontakt-mobile').click(function(){
+    $('.mobile-kontakt').show();
+    $('.mobile-einstellungen').hide();
+    $('.mobile-news').hide();
+    $('.mobile-kalender').hide();
+    $('.mobile-statistiken').hide();
+    $('.mobile-nachrichten').hide();
+    $('.mobile-veranstalter').hide();
+  });
+  $('.kalender-mobile').click(function(){
+    $('.mobile-kontakt').hide();
+    $('.mobile-einstellungen').hide();
+    $('.mobile-news').hide();
+    $('.mobile-kalender').show();
+    $('.mobile-statistiken').hide();
+    $('.mobile-nachrichten').hide();
+    $('.mobile-veranstalter').hide();
+  });
+  $('.statistiken-mobile').click(function(){
+    $('.mobile-kontakt').hide();
+    $('.mobile-einstellungen').hide();
+    $('.mobile-news').hide();
+    $('.mobile-kalender').hide();
+    $('.mobile-statistiken').show();
+    $('.mobile-nachrichten').hide();
+    $('.mobile-veranstalter').hide();
+  });
+  $('.nachrichten-mobile').click(function(){
+    $('.mobile-kontakt').hide();
+    $('.mobile-einstellungen').hide();
+    $('.mobile-news').hide();
+    $('.mobile-kalender').hide();
+    $('.mobile-statistiken').hide();
+    $('.mobile-nachrichten').show();
+    $('.mobile-veranstalter').hide();
+  });
+  $('.veranstalter-mobile').click(function(){
+    $('.mobile-kontakt').hide();
+    $('.mobile-einstellungen').hide();
+    $('.mobile-news').hide();
+    $('.mobile-kalender').hide();
+    $('.mobile-statistiken').hide();
+    $('.mobile-nachrichten').hide();
+    $('.mobile-veranstalter').show();
+  });
+  $(document).on('ready', function(){
+    $('.mobile-einstellungen').hide();
+    $('.mobile-news').hide();
+    $('.mobile-kontakt').hide();
+    $('.mobile-kalender').hide();
+    $('.mobile-statistiken').hide();
+    $('.mobile-nachrichten').hide();
+    $('.mobile-veranstalter').hide();
+    $(function(){
+    $("<style>")
+        .text(".text-band-edit-description{ margin: 0; }")
+        .appendTo($("body"));
+      });
+    $(function(){
+    $("<style>")
+        .text(".text-event-edit-description{ margin: 0; }")
+        .appendTo($("body"));
+      });
+  })
+  //einstellungen
+
+  $('.nutzer').click(function(){
+		$('.js-lazy-load-einstellungen-user').load("/users/edit");
+		$('.js-lazy-load-einstellungen-band-bearbeiten').hide();
+		$('.js-lazy-load-einstellungen-band-create').hide();
+		$('.js-lazy-load-einstellungen-user').show();
+		$('.einstellungen-description').hide();
+	});
+  $('.band-bearbeiten').click(function(){
+		$('.js-lazy-load-einstellungen-band-bearbeiten').load("/bands/which_edit")
+		$('.js-lazy-load-einstellungen-user').hide();
+		$('.js-lazy-load-einstellungen-band-create').hide();
+		$('.js-lazy-load-einstellungen-band-bearbeiten').show();
+		$('.einstellungen-description').hide();
+	})
+  $('.band-create').click(function(){
+		$('.js-lazy-load-einstellungen-band-create').load("/bands/new")
+		$('.js-lazy-load-einstellungen-user').hide();
+		$('.js-lazy-load-einstellungen-band-bearbeiten').hide();
+		$('.js-lazy-load-einstellungen-band-create').show();
+		$('.einstellungen-description').hide();
+	})
+
+

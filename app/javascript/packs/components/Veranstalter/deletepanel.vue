@@ -10,17 +10,14 @@
       template(v-if="state == 'fail'")
         failForm
       template(v-if="state == 'notCreated'")
+        b-form(@submit="onSubmit")
+          center
+            h5(style="color: white; margin-top: 20px;") Soll wirklich {{ bookers.club }} in {{ bookers.stadt }} gelöscht werden?
+            br
         .row
-          .col.col-md-2
-          .col.col-md-8
-              b-form(@submit="onSubmit")
-                center
-                  h5(style="color: white; margin-top: 20px;") Soll wirklich {{ bookers.club }} in {{ bookers.stadt }} gelöscht werden?
-                  br
-        .row
-          wysiwyg(v-model='kommentar' style='background-color: white; color: black !important; height: 200px; max-width: 380px; margin-left: 25px' placeholder="Wenn ja, warum?")
+          wysiwyg(v-model='kommentar' style='background-color: white; color: black !important; height: 200px; max-width: 400px;' placeholder="Wenn ja, warum?")
         center
-          b-button(type="submit" style="margin-top: 35px; background-color: red; !important; border-radius: 25px; padding: 8px 25px;" @click="onSubmit")
+          b-button(type="submit" style="margin: 35px; background-color: red; !important; border-radius: 25px; padding: 8px 25px;" @click="onSubmit")
             | Löschen
 
 
@@ -108,7 +105,7 @@ export default {
 .form-for-bookers{
   background-color: #0bc443;
   height: 100%;
-  overflow: hidden;
+  overflow-x:hidden;
 }
 
 .form-for-bookers *{

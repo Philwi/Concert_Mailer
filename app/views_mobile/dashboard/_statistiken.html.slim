@@ -1,0 +1,46 @@
+.statistiken_charts
+  .card
+    .card-body
+      .card-title
+        .text-center
+          h4
+            | Veranstalter ohne E-Mail
+      = pie_chart email_null_charts_path
+      small
+        | Bitte unbedingt die E-Mails der Veranstalter nachtragen. Je mehr E-Mails eingetragen sind, desto mehr können erreicht werden. Dazu gerne in die News schauen.
+  .card
+    .card-body
+      .card-title
+        .text-center
+          h4
+            | Veranstalter zuletzt angelegt
+      = area_chart Booker.where('created_at IS NOT NULL').group('DATE(created_at)').count
+  .card
+    .card-body
+      .card-title
+        .text-center
+          h4
+            | Nachrichten-Tool pro Tag in Nutzung
+      = bar_chart Mailing.where('created_at IS NOT NULL').group('DATE(created_at)').count
+  .card
+    .card-body
+      .card-title
+        .text-center
+          h4
+            | Versandte E-Mails pro Tag
+      = column_chart email_to_booker_charts_path
+  .card
+    .card-body
+      .card-title
+        .text-center
+          h4
+            | Veranstalter nach Bundesland
+      = pie_chart Booker.where('bundesland IS NOT NULL AND active = true').group(:bundesland).count, donut: true, height: "400px"
+  .card
+    .card-body
+      .card-title
+        .text-center
+          h4
+            | Veranstalter nach Land
+      = pie_chart Booker.where('land IS NOT NULL AND active = true').group(:land).count, donut: true, height: "400px"
+

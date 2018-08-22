@@ -19,7 +19,7 @@
   .bookerTable
     .row
       .col-md-12
-        table.table.table-borderless
+        table.table.table-borderless.table-responsive-sm
           thead
             tr
               th Stadt

@@ -1,6 +1,8 @@
 class DashboardController < ApplicationController
   before_action :logged_in
   before_action :activated
+  before_action :check_for_mobile, :only => [:index]
+
   def index
   end
 

@@ -358,3 +358,16 @@ Background gradients & images
   position: relative;
   height: 400px;
 }
+
+.menu-eingabe-moble h1{
+  padding: 10px 2px;
+  border-bottom: 0.3px solid #e1aaaa;
+  font-size: 28px;
+  font-family: Amatic SC;
+  font-weight: 700;
+}
+.menu-eingabe-moble h1:hover{
+  cursor: pointer;
+  background-color: #e1aaaa;
+  transition: background-color 1.3s;
+}

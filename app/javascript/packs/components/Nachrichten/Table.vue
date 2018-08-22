@@ -6,40 +6,38 @@
 
   .searchButtons
     .row
-      .col-md-4
+      .col-sm-4
         form(@submit.prevent)
           input.form-control(type='text' v-model='searchCity' autofocus='true' placeholder='Stadt')
-      .col-md-4
+      .col-sm-4
         form(@submit.prevent)
           input.form-control(type='text' v-model='searchClub' autofocus='true' placeholder='Club')
-      .col-md-4
+      .col-sm-4
         form(@submit.prevent)
           input.form-control(type='text' v-model='searchBundesland' autofocus='true' placeholder='Bundesland')
   br
   #mailingTable.mailingTable
-    .row
-      .col-md-12
-        table.table.table-borderless
-          thead
-            tr
-              th Stadt
-              th Club
-              th E-Mail
-              th Bundesland
-              th Land
-              th Kontaktperson
-          tbody
-            tr(v-for='(mailing) in paginatedData')
-              td  {{ mailing.stadt }}
-              td  {{ mailing.club }}
-              td  {{ mailing.email }}
-              td  {{ mailing.bundesland }}
-              td  {{ mailing.land }}
-              td  {{ mailing.name }}
+    table.table.table-borderless.table-responsive
+      thead
+        tr
+          th Stadt
+          th Club
+          th E-Mail
+          th Bundesland
+          th Land
+          th Kontaktperson
+      tbody
+        tr(v-for='(mailing) in paginatedData')
+          td  {{ mailing.stadt }}
+          td  {{ mailing.club }}
+          td  {{ mailing.email }}
+          td  {{ mailing.bundesland }}
+          td  {{ mailing.land }}
+          td  {{ mailing.name }}
 
     .row
-      .col-md-4
-      .col-md-4
+      .col-sm-4
+      .col-sm-4
         center
           i.fa.fa-chevron-circle-left.fa-2x(@click='prevPage' style='margin-right: 15px')
           b {{ pageNumber }}

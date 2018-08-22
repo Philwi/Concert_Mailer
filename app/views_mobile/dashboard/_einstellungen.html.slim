@@ -1,0 +1,27 @@
+.text-center
+      .btn-group.btn-group-toggle data-toggle="buttons"
+        label.btn.btn-secondary.nutzer
+          input#option1 autocomplete="off" checked="" name="options" type="radio" Usersettings
+        label.btn.btn-secondary.band-bearbeiten
+          input#option2 autocomplete="off" name="options" type="radio" Band edit
+        label.btn.btn-secondary.band-create
+          input#option2 autocomplete="off" name="options" type="radio" Band hinzufügen
+.js-lazy-load-einstellungen-user
+.js-lazy-load-einstellungen-band-bearbeiten
+.js-lazy-load-einstellungen-band-create
+.einstellungen-description
+  .text-band-edit-description style="margin: 0;"
+    .card
+      .card-body
+        .card-title
+          h4
+            | Ändere deine Nutzereinstellungen, füge eine neue Band hinzu oder pass eine bestehende an
+        p
+          | Je mehr Informationen wir über deine Band haben, desto mehr wird dem Veranstalter angezeigt
+        p
+          | Es wäre auch gut, wenn du in die News schauen würdest. So kannst du z.B. erfahren, dass noch einige E-Mails doppelt vergeben sind und die Veranstalter so unnötig oft angeschrieben werden.
+        b
+          | So wäre es sehr hilfreich, wenn du deinen Teil beitragen könntest und diese Veranstalter löschst und neue hinzufügst.
+
+    .card-img-bottom
+      = image_tag("main_einstellungen", class: "card-img-bottom")

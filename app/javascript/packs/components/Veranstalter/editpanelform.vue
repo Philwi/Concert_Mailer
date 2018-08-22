@@ -9,29 +9,26 @@
         ul
           li(v-for="error in errors" style="color: white;") {{ error }}
     .input-for-bookers
-      .row
-        .col.col-md-2
-        .col.col-md-8
-          template(v-if="state == 'notCreated'")
-            b-form(@submit="onSubmit")
-              input.form-control(type='text' v-model='stadt' autofocus='true' placeholder='Stadt' required="true")
-              input.form-control(type='text' v-model='club' autofocus='true' placeholder='Club' required="true")
-              input.form-control(type='text' v-model='email' autofocus='true' placeholder='E-Mail' required="true")
-              input.form-control(type='text' v-model='homepage' autofocus='true' placeholder='Website')
-              input.form-control(type='text' v-model='name' autofocus='true' placeholder='Kontaktperson')
-              input.form-control(type='text' v-model='telefon' autofocus='true' placeholder='Telefon')
-              input.form-control(type='text' v-model='bundesland' autofocus='true' placeholder='Bundesland' editable='true')
-              input.form-control(type='text' v-model='land' autofocus='true' placeholder='Land' required="true")
-              input.form-control(type='text' v-model='plz' autofocus='true' placeholder='PLZ')
-              center
-                b-button(type="submit" style="margin-top: 35px; background-color: #00426e !important; border-radius: 25px; padding: 8px 25px;")
-                  | Ändern
-          template(v-if="state == 'wait'")
-            deliverQuestion
-          template(v-if="state == 'success'")
-            successForm
-          template(v-if="state == 'fail'")
-            failForm
+      template(v-if="state == 'notCreated'")
+        b-form(@submit="onSubmit")
+          input.form-control(type='text' v-model='stadt' autofocus='true' placeholder='Stadt' required="true")
+          input.form-control(type='text' v-model='club' autofocus='true' placeholder='Club' required="true")
+          input.form-control(type='text' v-model='email' autofocus='true' placeholder='E-Mail' required="true")
+          input.form-control(type='text' v-model='homepage' autofocus='true' placeholder='Website')
+          input.form-control(type='text' v-model='name' autofocus='true' placeholder='Kontaktperson')
+          input.form-control(type='text' v-model='telefon' autofocus='true' placeholder='Telefon')
+          input.form-control(type='text' v-model='bundesland' autofocus='true' placeholder='Bundesland' editable='true')
+          input.form-control(type='text' v-model='land' autofocus='true' placeholder='Land' required="true")
+          input.form-control(type='text' v-model='plz' autofocus='true' placeholder='PLZ')
+          center
+            b-button(type="submit" style="margin: 35px; background-color: #00426e !important; border-radius: 25px; padding: 8px 25px;")
+              | Ändern
+      template(v-if="state == 'wait'")
+        deliverQuestion
+      template(v-if="state == 'success'")
+        successForm
+      template(v-if="state == 'fail'")
+        failForm
 
 
 
@@ -156,8 +153,6 @@ export default {
 <style>
 .form-for-bookers{
   background-color: #0bc443;
-  height: 100%;
-  overflow: hidden;
 }
 
 .form-for-bookers *{
@@ -183,5 +178,6 @@ export default {
 .input-for-bookers{
   top: 2%;
   position: relative;
+  margin: 0 5%;
 }
 </style>

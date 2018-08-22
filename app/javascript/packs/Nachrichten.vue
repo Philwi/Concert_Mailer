@@ -1,19 +1,16 @@
 <template lang="pug">
   .mailing
     .pagination-for-mailing
-      .row
-        .col.col-md-2
-        .col.col-md-8
-          center
-            b-progress(:max="max" :value="counter" class="w-50 mb-3" height="25px" style="margin-bottom: 0 !important")
-          .ul.list-inline
-            .li.list-inline-item(style="margin-right: 5%" @click="table")
-              p.inline Kontakte
-            .li.list-inline-item(style="margin-right: 5%" @click="message")
-              p.inline Nachricht
-            .li.list-inline-item( @click="deliver")
-              p.inline Abschicken
-        .col.col-md-2
+      .progressbar-nachrichten
+        center
+          b-progress(:max="max" :value="counter" class="w-50 mb-3" height="25px" style="margin-bottom: 0 !important")
+        .ul.list-inline
+          .li.list-inline-item(style="margin-right: 5%" @click="table")
+            p.inline Kontakte
+          .li.list-inline-item(style="margin-right: 5%" @click="message")
+            p.inline Nachricht
+          .li.list-inline-item( @click="deliver")
+            p.inline Abschicken
     keep-alive
       template(v-if="state == 'table'")
         tableBookers
