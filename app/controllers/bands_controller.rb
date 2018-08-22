@@ -37,6 +37,10 @@ class BandsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def share
+
+  end
+
   private
   def band_params
     params.require(:band).permit(:id,:name, :ort, :bandcamp, :website, :gründung, :email, :telefon, :event_color)

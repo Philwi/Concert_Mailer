@@ -1,7 +1,13 @@
 $(document).on('click','#Band', function(){
   var id = this.value
   $('.js-lazy-load-band-edit').load("/bands/edit?id="+id)
-})
+});
+$(document).on('click','.share-my-band', function(){
+  alert();
+  preventDefault();
+  var id = this.value
+	$('.js-lazy-load-einstellungen-band-bearbeiten').load("/bands/share/?id=10")
+});
 // validations
 $(document).on('click','.submit-button-band', function(e){
   var errorLog = 'Bitte folgende Fehler beheben: \n';
