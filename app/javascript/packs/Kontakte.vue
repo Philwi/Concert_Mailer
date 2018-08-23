@@ -72,7 +72,7 @@ export default {
       bookers: [],
       booker: '',
       pageNumber: 0,
-      pageRecordSize: 10,
+      pageRecordSize: 6,
       refreshTable: '',
       clickedBooker: '',
     }
@@ -100,7 +100,7 @@ export default {
     showPanel1() {
       vueSlideoutPanelService.show({
           component: 'panelform',
-          width: '400px', //customize the width
+          width: '340px', //customize the width
           cssClass: 'panelform-body', //add a custom CSS class
           props: {
             data: {
@@ -115,7 +115,7 @@ export default {
       this.clickedBooker = booker;
       vueSlideoutPanelService.show({
           component: 'editpanelform',
-          width: '400px', //customize the width
+          width: '340px', //customize the width
           cssClass: 'panelform-body', //add a custom CSS class
           props: {
               booker
@@ -130,7 +130,7 @@ export default {
       this.clickedBooker = booker;
       vueSlideoutPanelService.show({
           component: 'deletepanel',
-          width: '400px', //customize the width
+          width: '340px', //customize the width
           cssClass: 'panelform-body', //add a custom CSS class
           props: {
               booker

@@ -28,6 +28,7 @@ class BookersController < ApplicationController
   def create
     @booker = Booker.new(booker_params_create)
     @booker.user_id = current_user.id
+    @booker.active = true
     respond_to do |format|
       if @booker.save
         format.html { redirect_to @booker, notice: 'Booker was successfully updated.' }

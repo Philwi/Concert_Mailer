@@ -59,7 +59,7 @@ export default {
       mailings: [],
       mailing: '',
       pageNumber: 0,
-      pageRecordSize: 10,
+      pageRecordSize: 6,
     }
   },
   created() {
