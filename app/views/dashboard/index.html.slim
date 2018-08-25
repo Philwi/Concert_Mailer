@@ -13,6 +13,9 @@ header
     h1 Konzertveranstalter
     span.city aus der ganzen
     span.country Welt
+  .text-center
+    - flash.each do |key, value|
+      = content_tag :div, value, class: "flash_#{key}"
   nav.main-nav
     ul
       li.veranstalter data-toggle="modal" data-target=".kontakte_modal"
@@ -64,5 +67,8 @@ javascript:
   $('.ul-menu-close').click(function() {
     $('.ul-menu').css('bottom', '-150%');
   });
+
+  $('.flash_notice').fadeOut(5000);
+  $('.flash_error').fadeOut(5000);
 
 

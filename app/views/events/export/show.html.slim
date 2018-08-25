@@ -1,0 +1,7 @@
+= simple_form_for :export, url: events_export_and_send_events_path, wrapper: :horizontal_form do |f|
+  .container
+    = f.select :events, options_from_collection_for_select(@bands, "id", "name"), include_blank: 'Alle Veranstaltungen von allen Bands'
+    = image_tag("kalender.jpg", style: "width: 100%")
+    .text-center
+      br
+      = f.submit "Exportieren und an meine E-Mail verschicken", class: "btn btn-secondary"

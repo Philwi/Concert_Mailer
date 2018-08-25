@@ -18,7 +18,9 @@ class BandsController < ApplicationController
     if @band.save!
       ub = UserBand.new(user_id: current_user.id, band_id: @band.id)
       ub.save
-      redirect_to dashboard_path
+      redirect_to dashboard_path, flash: { notice: "Deine Band wurde erstellt" }
+    else
+      redirect_to dashboard_path, flash: { notice: "Deine Band konnte nicht erstellt werden" }
     end
   end
 
@@ -30,7 +32,9 @@ class BandsController < ApplicationController
   def update
     @band = Band.find(band_params[:id])
     if @band.update(band_params)
-      redirect_to dashboard_path
+      redirect_to dashboard_path, flash: { notice: "Deine Band wurde geupdated" }
+    else
+      redirect_to dashboard_path, flash: { notice: "Deine Band konnte nicht geupdated werden" }
     end
   end
 

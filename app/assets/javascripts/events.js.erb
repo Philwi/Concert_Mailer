@@ -7,6 +7,9 @@ $(document).on('click','.all-concerts', function(){
 $(document).on('click','.calendar-concerts', function(){
   $('.js-lazy-loader-calendar').load("calendar");
 })
+$(document).on('click','.export-concerts', function(){
+  $('.js-lazy-loader-calendar').load("events/export_kalender");
+})
 
 $(document).on('change','#event_bands', function(){
   $.ajax({
