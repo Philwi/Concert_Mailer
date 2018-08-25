@@ -1,35 +1,50 @@
-= simple_form_for @band do |f|
-  .settings
-    .text-band-edit-description style="margin-top: 2%"
-      .card
-        .card-body
-          .custom_band_form
-            .input-band-form-group
-              i.fa.fa-user.fa-2x
-              = f.input_field :name, required: true, placeholder: "Name", input_html: { required: true }, class: "band_name"
-            .input-band-form-group
-              i.fa.fa-map-marker.fa-2x
-              = f.input_field :ort, placeholder: "Von wo kommt ihr her?"
-            .input-band-form-group
-              i.fa.fa-headphones.fa-2x
-              = f.input_field :bandcamp, placeholder: "Bandcamp Link"
-            .input-band-form-group
-              i.fa.fa-home.fa-2x
-              = f.input_field :website, placeholder: "Eure Website"
-            .input-band-form-group
-              i.fa.fa-envelope.fa-2x
-              = f.input_field :email, required: true, placeholder: "Eure Band E-mail"
-            .input-band-form-group
-              i.fa.fa-phone.fa-2x
-              = f.input_field :telefon, placeholder: "Telefon"
-            .input-band-form-group
-              i.fa.fa-birthday-cake.fa-2x
-              = f.input :gründung, as: :date, html5: :true, label: false, hint: "Seit wann gibt es eure Band?"
-            .input-band-form-group
-              i.fa.fa-calendar.fa-2x
-              = f.input :event_color, input_html: { type: "color" }, hint: "Wähle deine Farbe für die Konzerte im Kalender aus", label: false
-            = f.input :id, as: :hidden, value: "#{current_user.id}"
+.settings
+  .text-band-edit-description style="margin-top: 2%"
+    .card
+      .card-body
+        = simple_form_for @band do |f|
+            .custom_band_form
+              .input-band-form-group
+                i.fa.fa-user.fa-2x
+                = f.input_field :name, required: true, placeholder: "Name", input_html: { required: true }, class: "band_name"
+              .input-band-form-group
+                i.fa.fa-map-marker.fa-2x
+                = f.input_field :ort, placeholder: "Von wo kommt ihr her?"
+              .input-band-form-group
+                i.fa.fa-headphones.fa-2x
+                = f.input_field :bandcamp, placeholder: "Bandcamp Link"
+              .input-band-form-group
+                i.fa.fa-home.fa-2x
+                = f.input_field :website, placeholder: "Eure Website"
+              .input-band-form-group
+                i.fa.fa-envelope.fa-2x
+                = f.input_field :email, required: true, placeholder: "Eure Band E-mail"
+              .input-band-form-group
+                i.fa.fa-phone.fa-2x
+                = f.input_field :telefon, placeholder: "Telefon"
+              .input-band-form-group
+                i.fa.fa-birthday-cake.fa-2x
+                = f.input :gründung, as: :date, html5: :true, label: false, hint: "Seit wann gibt es eure Band?"
+              .input-band-form-group
+                i.fa.fa-calendar.fa-2x
+                = f.input :event_color, input_html: { type: "color" }, hint: "Wähle deine Farbe für die Konzerte im Kalender aus", label: false
+              = f.input :id, as: :hidden, value: "#{current_user.id}"
+            .text-center
+              .button-group
+                = f.submit "Ändern", class: "btn btn-secondary submit-button-band"
+                = link_to band_path(@band), method: :delete, class: "btn btn-danger"
+                  | Löschen
+      .card-footer
+        = simple_form_for :band_share, url: band_share_path do |b|
+          .row
+            .col.col-sm-6
+              = b.select :user, options_from_collection_for_select(@users, "id", "name"), include_blank: 'Bandmitglied auswählen',class: "select_for_sharing_bands"
+              = b.input :band_id, as: :hidden, input_html: { value: @band.id }
+            .col.col-sm-6
+              .text-center
+                = b.submit "Teilen", class: "btn btn-secondary"
           .text-center
-            = f.submit "Ändern", class: "btn btn-secondary submit-button-band"
-            = link_to band_path(@band), method: :delete, class: "btn btn-danger"
-              | Löschen
+            small
+              | Zum Teilen der Band, ein Bandmitglied auswählen. Dann werden die Kalendereinträge der Band mit den Bandmitgliedern geteilt.
+
+

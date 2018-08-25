@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get "/", to: "landing_page#index"
   resources :users
   resources :bands
-  get "bands/share/:id", to: "bands#share", as: :band_share
+  post "bands_share", to: "bands#share", as: :band_share
   get "news/index", to: "news#index"
   get "bands/which_edit", to: "bands#which_edit", as: :bands_which_edit
   get "calendar", to: "events#calendar", as: :calendar

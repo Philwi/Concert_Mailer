@@ -5,23 +5,26 @@ class BandsController < ApplicationController
   end
 
   def show
-    @band = Band.where(user_id: current_user.id)
+    @band = Band.where("id IN (SELECT band_id FROM user_bands WHERE user_id = #{current_user.id})")
   end
 
   def index
-    @band = Band.where(user_id: current_user.id)
+    @band = Band.where("id IN (SELECT band_id FROM user_bands WHERE user_id = #{current_user.id})")
   end
 
   def create
     @band = Band.new(band_params)
     @band.user_id = current_user.id
     if @band.save!
+      ub = UserBand.new(user_id: current_user.id, band_id: @band.id)
+      ub.save
       redirect_to dashboard_path
     end
   end
 
   def edit
     @band = Band.find(params[:id])
+    @users = User.where("active IS NOT NULL OR active != false")
   end
 
   def update
@@ -38,7 +41,12 @@ class BandsController < ApplicationController
   end
 
   def share
-
+    u = UserBand.new(user_id: params[:band_share][:user], band_id:  params[:band_share][:band_id])
+    if u.save
+      redirect_to dashboard_path, flash: { notice: "Band wurde geteilt" }
+    else
+      redirect_to dashboard_path, flash: { error: "Band konnte nicht geteilt werden" }
+    end
   end
 
   private

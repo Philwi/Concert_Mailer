@@ -5,14 +5,16 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.where(band_id: Band.where(user_id: current_user.id))
+    @events = Event.where("band_id IN (SELECT band_id FROM user_bands WHERE user_id = #{current_user.id})")
+    # @events = Event.where(band_id: Band.where(user_id: current_user.id))
     @events = @events.where('start_time >= ? ', Time.zone.now).order("start_time")
-    @band = Band.where(user_id: current_user.id)
+    @band = Band.where("id IN (SELECT band_id FROM user_bands WHERE user_id = #{current_user.id})")
   end
 
   def search
     if params[:band_id].blank?
-      @events = Event.where(band_id: Band.where(user_id: current_user.id))
+      @events = Event.where("band_id IN (SELECT band_id FROM user_bands WHERE user_id = #{current_user.id})")
+      # @events = Event.where(band_id: Band.where(user_id: current_user.id))
       @events = @events.where('start_time >= ? ', Time.zone.now)
     else
       @events = Event.where('start_time >= ? AND band_id = ?', Time.zone.now, params[:band_id])
@@ -36,7 +38,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    @band = Band.where(user_id: current_user.id)
+    @band = Band.where("id IN (SELECT band_id FROM user_bands WHERE user_id = #{current_user.id})")
   end
 
   # GET /events/1/edit

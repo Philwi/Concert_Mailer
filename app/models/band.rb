@@ -1,5 +1,7 @@
 class Band < ApplicationRecord
-  belongs_to :user
+  has_many :user_bands
+  has_many :users, through: :user_bands
+
   has_many :event
   validates :name, length: { minimum: 2}
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
@@ -12,6 +14,5 @@ class Band < ApplicationRecord
       self.band_color = "#000"
     end
   end
-
 
 end
