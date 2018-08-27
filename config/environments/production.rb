@@ -54,6 +54,7 @@ config.action_mailer.smtp_settings = {
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
+  config.action_dispatch.default_headers.merge!('Cache-Control' => 'no-store, no-cache')
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
