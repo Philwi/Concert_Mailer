@@ -9,10 +9,18 @@
   padding: 0;
 }
 
+.startvideo{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+
+}
+
 body {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  //background-image: linear-gradient(to right top, #15291b, #154625, #10652c, #068531, #00a632);
-  background-image: linear-gradient(to right top, #ff9800, #c97811, #955a15, #643d15, #362311);
+  background-image: linear-gradient(to right top, #051937, #2b3149, #4a4b5c, #686770, #858585);
 }
 
 input, button {

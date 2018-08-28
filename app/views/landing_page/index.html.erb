@@ -1,3 +1,6 @@
+<div class="startVideo">
+  <%= video_tag("startvideo.mp4",autoplay: true, mute: false, loop: true, style:"transform: scale(2)") %>
+</div>
 <p class="tip"></p>
 <div class="cont">
   <div class="form sign-in">
@@ -67,5 +70,9 @@
 <script>
   document.querySelector('.img__btn').addEventListener('click', function() {
     document.querySelector('.cont').classList.toggle('s--signup');
+  });
+  $('#new_user').submit(function(){
+    alert("Eine E-Mail wird an dich gesendet. Dein Account wird durch den klick Link in dieser E-Mail aktiviert!");
+
   });
 </script>

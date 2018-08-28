@@ -1,2 +1,8 @@
-javascript:
-  window.location.href="/?error='SignUp'"
+- if User.find_by(email: params[:user][:email]).confirmed_at == nil
+  javascript:
+    window.location.href="/not_confirmed"
+
+
+- else
+  javascript:
+    window.location.href="/?error='SignUp'"
