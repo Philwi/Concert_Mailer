@@ -46,15 +46,15 @@
       <%= simple_form_for @user, url: user_registration_path, method: :post do |f| %>
         <label>
           <span>Name</span>
-          <%= f.input :name, label: false, class: "signUpName" %>
+          <%= f.input :name, label: false, input_html: { class: "signUpName" }%>
         </label>
         <label>
           <span>Email</span>
-          <%= f.input :email, label: false, class: "signUpEmail" %>
+          <%= f.input :email, label: false, input_html: {class: "signUpEmail"}%>
         </label>
         <label>
           <span>Password</span>
-          <%= f.input :password, label: false, class: "signUpPassword" %>
+          <%= f.input :password, label: false, input_html: {class: "signUpPassword"} %>
         </label>
         <%= f.button :submit, "Anmelden", class: "submit signUpSubmit" %>
         <center>
