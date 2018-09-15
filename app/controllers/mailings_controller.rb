@@ -32,7 +32,7 @@ class MailingsController < ApplicationController
     end
 
     def sql_count_double_mails
-      sql = "SELECT club, email, stadt, bundesland FROM Bookers WHERE email IN (SELECT email FROM Bookers GROUP BY email HAVING COUNT(email) >= 2 AND email IS NOT NULL) AND NOT (active IS NULL OR active =  'false') ORDER BY email, club, stadt;"
+      sql = "SELECT club, email, stadt, bundesland FROM Bookers WHERE email IN (SELECT email FROM Bookers GROUP BY email, active HAVING COUNT(email) >= 2 AND email IS NOT NULL AND NOT (active = false OR active IS NULL )) AND NOT (active IS NULL OR active =  'false') ORDER BY email, club, stadt;"
       @booker_to_edit = ActiveRecord::Base.connection.execute(sql)
     end
   protected
