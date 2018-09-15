@@ -2,8 +2,8 @@ class ChartsController < ApplicationController
   before_action :logged_in
   def email_null
     @hash = { }
-    null = Booker.where('Email IS NULL').count
-    not_null = Booker.where('Email IS NOT NULL').count
+    null = Booker.where('Email IS NULL AND active = true').count
+    not_null = Booker.where('Email IS NOT NULL AND active = true').count
     @hash['Ohne E-Mail'] = null
     @hash['Mit E-Mail'] = not_null
     render json: @hash
