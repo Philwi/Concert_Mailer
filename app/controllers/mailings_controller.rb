@@ -11,7 +11,7 @@ class MailingsController < ApplicationController
   def mailing
     @mailing = Mailing.new(mailing_params)
     @mailing.user_id = current_user.id
-    if @mailing.save && !params[:band].blank? && sql_count_double_mails == 0
+    if @mailing.save && !params[:band].blank? && sql_count_double_mails.count == 0
       mailing_params[:veranstalter].split(',').each do |mail|
         BookingMailer.with(user: current_user, veranstalter: Booker.find(mail), mail: @mailing, band: params[:band] ).gig_mail.deliver_now
       end
