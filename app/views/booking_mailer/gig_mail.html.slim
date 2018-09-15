@@ -12,4 +12,8 @@ p = @body
   br
   b Website:
   p = @band.website
+- unless @band.email.blank?
+  br
+  b E-Mail:
+  p = @band.email
 
